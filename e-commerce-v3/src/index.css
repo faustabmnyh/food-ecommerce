@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(45deg, white 0, #dedede 100%);
+  min-height: 100vh;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.grid__container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 4rem 1fr 5rem;
+  min-height: 100vh;
+  height: 100%;
+}
+
+header {
+  grid-area: header;
+  padding: 0 2rem;
+}
+
+main {
+  grid-area: main;
+  /* padding: 2rem; */
+  overflow-x: hidden;
+  position: relative;
+}
+
+footer {
+  grid-area: footer;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

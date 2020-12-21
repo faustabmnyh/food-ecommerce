@@ -1,0 +1,25 @@
+.home {
+  position: relative;
+  z-index: 11;
+}
+
+.home__product {
+  display: flex;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  overflow-x: auto;
+  margin-left: 4rem;
+}
+
+.home__product::-webkit-scrollbar {
+  display: none;
+}
+
+.home__product::-moz-scrollbar {
+  display: none;
+}
+
+/* .home__content {
+  padding: 3rem 1rem;
+  display: flex;
+} */
