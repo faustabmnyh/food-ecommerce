@@ -1,0 +1,72 @@
+.payment {
+  font-family: "quicksand";
+}
+
+.payment__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.payment__header {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.payment__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 420px;
+  background: white;
+  border-radius: 30px;
+  padding: 25px 30px;
+  height: 180px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.payment__cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment__cardHeader h2 {
+  color: #1a3c65;
+  font-size: 23px;
+}
+
+.payment__cardHeader p {
+  color: gray;
+}
+
+.payment__cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.payment__cardFooter strong {
+  font-size: 20px;
+  color: #1a3c65;
+}
+
+.payment__btn {
+  width: 100px;
+  height: 40px;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid #1a3c65;
+  background: white;
+  font-family: "Quicksand", sans-serif;
+  color: #1a3c65;
+  margin: 10px 0;
+  cursor: pointer;
+  outline: none;
+  font-weight: bolder;
+}
+
+.payment__btn:hover {
+  background: #1a3c65;
+  color: white;
+}

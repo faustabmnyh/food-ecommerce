@@ -1,0 +1,52 @@
+.shipping__container {
+  background: white;
+  display: flex;
+  max-width: 60rem;
+  width: 100%;
+  margin: 30px auto;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.08);
+  flex-direction: column;
+  font-family: "Quicksand", sans-serif;
+  margin-bottom: 50px;
+}
+
+.shipping__container h1 {
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.shipping__container label {
+  font-size: 18px;
+}
+
+.shipping__container form input {
+  width: 98%;
+  height: 45px;
+  margin: 5px 0 10px 0;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 16px;
+  outline: none;
+  font-family: "Quicksand", sans-serif;
+  border: 1px solid rgb(218, 218, 218);
+  text-indent: 5px;
+}
+
+.shipping__btn {
+  width: 100%;
+  height: 35px;
+  color: white;
+  border-radius: 30px;
+  background: #1a3c65;
+  text-transform: uppercase;
+  font-family: "Quicksand", sans-serif;
+  border: none;
+  margin: 10px 0;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 2px;
+  box-shadow: 0px 5px 10px rgba(26, 60, 101, 0.282);
+}

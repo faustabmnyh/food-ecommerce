@@ -1,18 +1,18 @@
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MainApp from "./pages/MainApp";
+import Signin from "./pages/Signin";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <Router>
-      <div className="grid__container">
-        <Header />
-        <main>
-          <Home />
-        </main>
-        <Footer />
-      </div>
+      <Switch>
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/signin" component={Signin} />
+        <Route path="/">
+          <MainApp />
+        </Route>
+      </Switch>
     </Router>
   );
 }

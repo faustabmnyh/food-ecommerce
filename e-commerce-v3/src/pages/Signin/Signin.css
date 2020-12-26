@@ -1,0 +1,88 @@
+.signin {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  font-family: "quicksand";
+}
+
+.siginin__left {
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.signin__header {
+  font-size: 28px;
+  margin-left: 40px;
+  margin-bottom: 20px;
+  color: #1a3c65;
+  font-weight: bolder;
+}
+
+.signin__logo {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  max-width: 250px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.siginin__container {
+  width: 100%;
+}
+
+.siginin__container form {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.siginin__container form h5 {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.siginin__container form input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  outline: none;
+  font-family: "Quicksand", sans-serif;
+  border: 1px solid rgb(218, 218, 218);
+  text-indent: 5px;
+}
+
+
+.singin__btnLogin {
+  font-family: "quicksand";
+  width: 100%;
+  height: 35px;
+  color: white;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  font-weight: bolder;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px rgba(26, 60, 101, 0.4);
+  background: #1a3c65;
+}
+
+.singin__btnLogin:hover {
+  background: #0b3364;
+}
+
+.signin__btnRegister {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.siginin__image {
+  max-width: 930px;
+  width: 100%;
+}

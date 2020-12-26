@@ -33,18 +33,25 @@ body {
 
 header {
   grid-area: header;
-  padding: 0 2rem;
+  padding: 10px 2.1rem;
+  width: 95%;
+  position: fixed;
+  z-index: 111111;
+}
+.show {
+  transition: 500ms all ease;
+  background: rgb(231, 231, 231);
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.315);
 }
 
 main {
   grid-area: main;
-  /* padding: 2rem; */
   overflow-x: hidden;
-  position: relative;
 }
 
 footer {
   grid-area: footer;
+  margin-top: -30px;
 }
 
 ul {
@@ -54,4 +61,115 @@ ul {
 a {
   text-decoration: none;
   color: black;
+}
+
+a:hover {
+  color: #3a489e;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px #a4a4a4 solid;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: "quicksand";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+select:hover {
+  border: 1px solid #404040;
+}
+
+.no-arrow {
+  -moz-appearance: textfield;
+}
+.no-arrow::-webkit-inner-spin-button {
+  display: none;
+}
+.no-arrow::-webkit-outer-spin-button,
+.no-arrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rating span {
+  color: #f0c040;
+  margin: 0.1rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+.rating__reviews {
+  margin-left: 5px;
+}
+
+/* alert */
+.success {
+  color: #20a020;
+}
+
+.danger {
+  color: #a02020;
+}
+
+.dangerInput {
+  display: flex;
+  align-items: center;
+  color: #a02020;
+  margin-bottom: 10px;
+}
+
+.auth__error {
+  border: 1px solid #a02020 !important;
+  margin-bottom: 0px !important;
+  color: #a02020;
+}
+
+.auth__errorHead {
+  color: #a02020;
+}
+
+.alert {
+  padding: 1rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+}
+
+.alert__info {
+  color: #2020a0;
+  background: #c7c7ff;
+}
+
+.alert__danger {
+  margin-top: 5px;
+  color: #a02020;
+  background: #ffe0e0e0;
+  padding: 10px;
+}
+
+.alert__dangerHistory {
+  margin: 5px 10px 5px 0;
+  color: #a02020;
+  background: #ffe0e0e0;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.alert__success {
+  margin-top: 5px;
+  padding: 10px;
+  color: #20a020;
+  background: #eeffe0;
+}
+
+.loading {
+  display: block !important;
 }

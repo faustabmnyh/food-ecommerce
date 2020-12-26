@@ -6,9 +6,9 @@
 .home__product {
   display: flex;
   align-items: center;
-  /* flex-wrap: wrap; */
   overflow-x: auto;
-  margin-left: 4rem;
+  margin-left: 2rem;
+  padding: 25px;
 }
 
 .home__product::-webkit-scrollbar {

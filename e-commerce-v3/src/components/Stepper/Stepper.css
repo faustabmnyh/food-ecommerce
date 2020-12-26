@@ -1,0 +1,69 @@
+.stepper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-family: "quicksand";
+}
+
+.stepper__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stepper__rounded {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  background: #c0c0c0;
+  margin-bottom: 5px;
+  color: white;
+  border-radius: 50%;
+}
+
+.stepper__line {
+  width: 100px;
+  height: 5px;
+  margin-top: -5px;
+  background: #c0c0c0;
+}
+
+.stepper__line.active {
+  background: #1a3c65;
+}
+
+.stepper__rounded.active {
+  background: #1a3c65;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 5px;
+  color: white;
+  border-radius: 50%;
+}
+
+.stepper__textOne {
+  margin-left: -12px;
+}
+
+.stepper__textTwo {
+  margin-left: -17px;
+}
+
+.stepper__textThree {
+  margin-left: -20px;
+}
+
+.stepper__textFour {
+  margin-left: -30px;
+}
+
+.stepper__textFive {
+  margin-left: -38px;
+}

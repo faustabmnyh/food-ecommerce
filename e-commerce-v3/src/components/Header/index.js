@@ -1,11 +1,44 @@
 import "./Header.css";
 import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
+import { signout } from "../../actions/userActions";
+import { Avatar, makeStyles } from "@material-ui/core";
+import { useEffect, useState } from "react";
+
+const useStyles = makeStyles((theme) => ({
+  small: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+  },
+}));
 
 const Header = () => {
+  const classes = useStyles();
+  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  const userSignin = useSelector((state) => state.userSignin);
+  const { aboutUser } = userSignin;
+  const handleSignout = () => {
+    dispatch(signout());
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 10) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+      return () => {
+        window.removeEventListener("scroll");
+      };
+    });
+  }, []);
   return (
-    <header>
+    <header className={show && "show"}>
       <div className="header">
         <div className="header__left">
           <ul className="header__items">
@@ -35,17 +68,49 @@ const Header = () => {
           <ul className="header__items">
             <li className="header__cart">
               <form className="header__cartInput">
-                <div className="header__searchBtn">
+                <label htmlFor="search" className="header__searchBtn">
                   <SearchIcon />
-                </div>
-                <input type="text" placeholder="Search..." />
+                </label>
+                <input id="search" type="text" placeholder="Search..." />
               </form>
-              <div className="header__cartBtn">
-                <LocalGroceryStoreIcon fontSize="small" />
+              <div className="header__cartBtnContainer">
+                <div
+                  className={
+                    cartItems.length === 0 ? "hide" : "header__cartNumber"
+                  }
+                >
+                  {cartItems.length}
+                </div>
+                <div className="header__cartBtn">
+                  <Link to="/cart">
+                    <LocalGroceryStoreIcon fontSize="small" />
+                  </Link>
+                </div>
               </div>
             </li>
             <li>
-              <button className="header__btn">Sign In</button>
+              {!aboutUser ? (
+                <Link to="/signin">
+                  <button className="header__btn">Sign In</button>
+                </Link>
+              ) : (
+                <div className="header__userProfileDropdown">
+                  <div className="header__userProfile">
+                    <Avatar className={classes.small} />
+                    <p>{aboutUser.username}</p>
+                  </div>
+                  <ul className="header__dropdownContent">
+                    <li>
+                      <Link to="/signin" onClick={handleSignout}>
+                        Sign Out
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/orderhistory">Order History</Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </li>
           </ul>
         </div>

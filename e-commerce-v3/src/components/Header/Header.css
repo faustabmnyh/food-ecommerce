@@ -7,12 +7,7 @@
 }
 .header img {
   max-width: 170px;
-  width: 100%;
 }
-
-/* .header__right > .MuiSvgIcon-root {
-  /* font-size: large; */
-/* } */
 
 .header__left {
   display: flex;
@@ -32,6 +27,7 @@
 .header__links {
   margin-left: 2rem;
   font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .header__links:hover {
@@ -64,6 +60,10 @@
   width: 100%;
 }
 
+.header__cartBtnContainer {
+  position: relative;
+}
+
 .header__cartBtn {
   color: #1a3c65;
   display: flex;
@@ -71,10 +71,31 @@
   align-items: center;
   background: white;
   cursor: pointer;
-  padding: 0 10px;
   border-radius: 0px 10px 10px 0px;
-  height: 32px;
+  width: 30px;
+  height: 31px;
   border-left: 1px solid rgb(224, 224, 224);
+}
+
+.header__cartNumber {
+  position: absolute;
+  right: -2px;
+  top: -6px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+  border-radius: 50%;
+  font-weight: bold;
+  background: #1a3c65;
+  font-family: "quicksand";
+}
+
+.hide {
+  display: none;
 }
 
 .header__btn {
@@ -89,4 +110,56 @@
   font-family: "Quicksand", sans-serif;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
   background: linear-gradient(75deg, #1a3c65, #3a489e);
+}
+
+.header__userProfile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__userProfile p {
+  margin-left: 5px;
+  color: #1a3c65;
+  font-weight: 600;
+}
+
+.header__userProfile:hover {
+  cursor: pointer;
+}
+
+.header__userProfileDropdown {
+  display: inline-block;
+  position: relative;
+  color: gray;
+  margin-left: 5px;
+}
+.header__dropdownContent {
+  display: none;
+  position: absolute;
+  min-width: 150px;
+  top: 30px;
+  left: -17px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
+  background: white;
+  font-size: 14px;
+  z-index: 9999;
+}
+
+.header__dropdownContent li {
+  padding: 8px 20px 8px 10px;
+}
+.header__dropdownContent li:hover {
+  background-color: antiquewhite;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.header__dropdownContent li a {
+  font-weight: bolder;
+  color: #1a3c65;
+}
+
+.header__userProfileDropdown:hover .header__dropdownContent {
+  display: block;
 }
