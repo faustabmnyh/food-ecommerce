@@ -99,15 +99,42 @@ const Header = () => {
                     <Avatar className={classes.small} />
                     <p>{aboutUser.username}</p>
                   </div>
-                  <ul className="header__dropdownContent">
-                    <li>
-                      <Link to="/signin" onClick={handleSignout}>
-                        Sign Out
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/orderhistory">Order History</Link>
-                    </li>
+                  <ul
+                    className={
+                      aboutUser && aboutUser.isAdmin
+                        ? "header__dropdownContent admin"
+                        : "header__dropdownContent"
+                    }
+                  >
+                    <div>
+                      <li>
+                        <Link to="/profile">Profile</Link>
+                      </li>
+                      <li>
+                        <Link to="/orderhistory">Order History</Link>
+                      </li>
+                      <li>
+                        <Link to="/signin" onClick={handleSignout}>
+                          Sign Out
+                        </Link>
+                      </li>
+                    </div>
+                    {aboutUser && aboutUser.isAdmin && (
+                      <div>
+                        <li>
+                          <Link to="/dashboard">Dashboard</Link>
+                        </li>
+                        <li>
+                          <Link to="/productlists">Products</Link>
+                        </li>
+                        <li>
+                          <Link to="/orderlist">Orders</Link>
+                        </li>
+                        <li>
+                          <Link to="/userslist">Users</Link>
+                        </li>
+                      </div>
+                    )}
                   </ul>
                 </div>
               )}

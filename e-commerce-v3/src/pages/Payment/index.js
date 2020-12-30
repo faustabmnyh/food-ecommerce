@@ -13,6 +13,7 @@ const Payment = () => {
   if (!shippingAddress) {
     history.push("/shipping");
   }
+  console.log(shippingAddress);
   const handlePaymentMethod = (e) => {
     dispatch(savePaymentMethod(e.target.name));
     history.push("/placeorder");

@@ -130,7 +130,6 @@
 
 .header__userProfileDropdown {
   display: inline-block;
-  position: relative;
   color: gray;
   margin-left: 5px;
 }
@@ -138,21 +137,37 @@
   display: none;
   position: absolute;
   min-width: 150px;
-  top: 30px;
-  left: -17px;
+  top: 45px;
+  left: 99%;
+  transform: translateX(-99%);
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
   background: white;
   font-size: 14px;
-  z-index: 9999;
+  z-index: 200;
+}
+
+.header__dropdownContent.admin {
+  width: 250px;
+  top: 45px;
+  left: 99%;
+  transform: translateX(-99%);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
+  background: white;
+  font-size: 14px;
+  z-index: 200;
 }
 
 .header__dropdownContent li {
-  padding: 8px 20px 8px 10px;
+  padding: 5px 20px 8px 10px;
+  cursor: pointer;
+  margin: 5px 0;
 }
 .header__dropdownContent li:hover {
   background-color: antiquewhite;
   background: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
 }
 
 .header__dropdownContent li a {
@@ -161,5 +176,6 @@
 }
 
 .header__userProfileDropdown:hover .header__dropdownContent {
-  display: block;
+  display: flex;
+  justify-content: center;
 }

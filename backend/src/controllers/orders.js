@@ -1,5 +1,11 @@
+const e = require("express");
 const expressAsyncHandler = require("express-async-handler");
 const Order = require("../models/Order");
+
+const getAllOrders = expressAsyncHandler(async (req, res) => {
+  const orders = await Order.find({}).populate("user", "username");
+  res.send(orders);
+});
 
 const orderDetail = expressAsyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
@@ -37,17 +43,43 @@ const orderHistory = expressAsyncHandler(async (req, res) => {
 
 const orderPayment = expressAsyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
+  console.log(Date.now());
   if (order) {
     order.isPaid = true;
     order.paidAt = Date.now();
     order.paymentResult = {
       id: req.body.id,
       status: req.body.status,
-      update__time: req.body.update__time,
-      email__address: req.body.email_address,
+      update_time: req.body.update_time || Date.now(),
+      email_address:
+        req.body.email_address ||
+        req.body?.charges?.data[0].billing_details.email,
     };
     const updatedOrder = await order.save();
     res.send({ message: "Order Paid", order: updatedOrder });
+  } else {
+    res.status(404).send({ message: "Order Not Found" });
+  }
+});
+
+const orderDeliver = expressAsyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+  if (order) {
+    order.isDelivered = true;
+    order.deliveredAt = Date.now();
+    const updatedOrder = await order.save();
+    res.send({ message: "Order Delivered", order: updatedOrder });
+  } else {
+    res.status(404).send({ message: "Order Not Found" });
+  }
+});
+
+const deleteOrder = expressAsyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+  console.log(order);
+  if (order) {
+    const deletedOrder = await order.remove();
+    res.send({ message: "Order Deleted", order: deletedOrder });
   } else {
     res.status(404).send({ message: "Order Not Found" });
   }
@@ -58,4 +90,7 @@ module.exports = {
   orderDetail,
   orderHistory,
   orderPayment,
+  getAllOrders,
+  deleteOrder,
+  orderDeliver,
 };

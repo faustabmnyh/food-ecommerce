@@ -1,17 +1,24 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const stripe = require("stripe")(
+  process.env.STRIPE_CLIENT_SECRET ||
+    "sk_test_51HQog0E0XWms1zj7AvkuSkxHCqeKrFvC0pACMq5r71pmpGRP2xMyzAzgdd0zTdHmLEd5MC6oilwtHNDQoRc8UwNg00HVAzIYSt"
+);
 const userRouter = require("./src/routes/users");
 const productRouter = require("./src/routes/products");
 const orderRouter = require("./src/routes/orders");
+const uploadRouter = require("./src/routes/uploads");
+const path = require("path");
 
 dotenv.config();
 
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
 const MONGODB_URI =
@@ -31,13 +38,35 @@ mongoose
     });
   })
   .catch((err) => console.log(err.message));
-
+app.post("/v1/config/stripe", async (req, res) => {
+  let { id, order } = req.body;
+  console.log(id);
+  console.log(order.shippingAddress);
+  try {
+    const payment = await stripe.paymentIntents.create({
+      amount: order.totalPrice * 100,
+      currency: "USD",
+      description: `Purcashed $${order.totalPrice * 100}`,
+      payment_method: id,
+      confirm: true,
+    });
+    res.send({ message: "Payment Successful", payment });
+  } catch (err) {
+    console.log(err);
+    res.status(401).send({ message: "Payment Error" });
+  }
+});
+app.use("/v1/uploads", uploadRouter);
 app.use("/v1/users", userRouter);
 app.use("/v1/products", productRouter);
 app.use("/v1/orders", orderRouter);
 app.use("/v1/config/paypal", (_, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
+app.use(
+  "/public/images",
+  express.static(path.join(__dirname, "/public/images"))
+);
 
 app.use((err, _, res, __) => {
   res.status(500).send({ message: err.message });

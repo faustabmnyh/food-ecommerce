@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const {
   validateRegisterInput,
   validateLoginInput,
+  validateUserUpdatePassword,
+  validateUserUpdate,
 } = require("../utils/check-auth");
 const { generateToken } = require("../utils/token");
 
@@ -75,7 +77,83 @@ const userRegister = expressAsyncHandler(async (req, res) => {
   }
 });
 
+const getUser = expressAsyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (user) {
+    res.send(user);
+  } else {
+    res.status(404).send({ message: "User Not Found" });
+  }
+});
+
+const updateUser = expressAsyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  const username = await User.findOne({ username: req.body.username });
+  const email = await User.findOne({ email: req.body.email });
+  if (user) {
+    const { valid, messages } = validateUserUpdate(
+      req.body.username,
+      req.body.email
+    );
+    if (!valid) {
+      res.status(401).send({ message: messages });
+      return;
+    } else {
+      if (username) {
+        if (username.username === user.username) {
+          user.username = req.body.username || user.username;
+        } else {
+          res
+            .status(401)
+            .send({ message: { username: "This username already exist" } });
+        }
+      } else {
+        user.username = req.body.username || user.username;
+      }
+      if (email) {
+        if (email.email === user.email) {
+          user.email = req.body.email || user.email;
+        } else {
+          res
+            .status(401)
+            .send({ message: { email: "This email already exist" } });
+        }
+      } else {
+        user.email = req.body.email || user.email;
+      }
+    }
+    if (req.body.password) {
+      const { valid, messages } = validateUserUpdatePassword(
+        req.body.password,
+        req.body.confirmPassword
+      );
+      if (!valid) {
+        res.status(401).send({ message: messages });
+        return;
+      } else {
+        user.password = bcrypt.hashSync(req.body.password);
+      }
+    }
+    const updatedUser = await user.save();
+    res.send({
+      _id: updatedUser._id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      token: generateToken(updatedUser),
+    });
+  }
+});
+
+const getAllUser = expressAsyncHandler(async (req, res) => {
+  const users = await User.find({});
+  res.send(users);
+});
+
 module.exports = {
   userRegister,
   userSignin,
+  getUser,
+  updateUser,
+  getAllUser,
 };

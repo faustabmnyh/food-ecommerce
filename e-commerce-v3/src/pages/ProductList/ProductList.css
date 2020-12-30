@@ -1,0 +1,81 @@
+.productList {
+  padding: 2rem;
+  margin: auto;
+}
+
+.productList__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.productList__header button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 45px;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-family: "Quicksand", sans-serif;
+  box-shadow: 5px 10px 20px rgba(26, 60, 101, 0.1);
+  background: linear-gradient(75deg, #1a3c65, #3a489e);
+}
+.productList__header button:hover {
+  background: linear-gradient(75deg, rgb(11, 49, 95), rgb(26, 41, 156));
+}
+
+.productList__image {
+  max-width: 70px;
+  width: 100%;
+}
+
+.productList__table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 5px 10px 20px rgba(26, 60, 101, 0.3);
+}
+
+.productList__table td,
+.productList__table th {
+  background: #012a4a;
+  text-align: center;
+  padding: 5px;
+  color: white;
+}
+
+.productList__table th {
+  background: #1a3c65;
+}
+
+.productList__table button {
+  width: 70px;
+  height: 35px;
+  font-family: "Quicksand", sans-serif;
+  color: #1a3c65;
+  border-radius: 8px;
+  background: white;
+  border: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+}
+
+.productList__table button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.productList__goto {
+  color: white;
+}
+.productList__goto:hover {
+  color: #bcf4f5;
+}

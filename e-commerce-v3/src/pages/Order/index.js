@@ -2,12 +2,19 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { detailOrder, paymentOrder } from "../../actions/orderActions";
+import {
+  deliveredOrder,
+  detailOrder,
+  paymentOrder,
+} from "../../actions/orderActions";
 import Loading from "../../components/Loading";
 import Message from "../../components/Message";
 import OrderSummary from "../../components/OrderSummary";
 import Stepper from "../../components/Stepper";
-import { ORDER_PAY_RESET } from "../../constants/orderConstants";
+import {
+  ORDER_DELIVER_RESET,
+  ORDER_PAY_RESET,
+} from "../../constants/orderConstants";
 import "./Order.css";
 
 const Order = () => {
@@ -18,6 +25,8 @@ const Order = () => {
   const { loading, error, order } = orderDetails;
   const orderPayment = useSelector((state) => state.orderPayment);
   const { success: successPayment } = orderPayment;
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const { success: successDeliver } = orderDeliver;
 
   useEffect(() => {
     const addPaypalScript = async () => {
@@ -31,8 +40,14 @@ const Order = () => {
       };
       document.body.appendChild(script);
     };
-    if (!order || successPayment || (order && order._id !== orderId)) {
+    if (
+      !order ||
+      successPayment ||
+      successDeliver ||
+      (order && order._id !== orderId)
+    ) {
       dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(detailOrder(orderId));
     } else {
       if (!order.isPaid) {
@@ -43,9 +58,12 @@ const Order = () => {
         }
       }
     }
-  }, [dispatch, order, successPayment, orderId]);
+  }, [dispatch, order, successDeliver, successPayment, orderId]);
   const handleSuccessPayment = (paymentResult) => {
     dispatch(paymentOrder(order, paymentResult));
+  };
+  const handleDeliver = () => {
+    dispatch(deliveredOrder(order._id));
   };
   return loading ? (
     <Loading />
@@ -140,6 +158,9 @@ const Order = () => {
               order={order}
               sdkReady={sdkReady}
               handleSuccessPayment={handleSuccessPayment}
+              handleDeliver={handleDeliver}
+              orderDeliver={orderDeliver}
+              orderPayment={orderPayment}
             />
           </div>
         </div>
