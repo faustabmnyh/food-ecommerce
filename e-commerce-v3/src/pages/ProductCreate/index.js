@@ -9,7 +9,7 @@ import { PRODUCT_CREATE_RESET } from "../../constants/productConstants";
 import "./ProductCreate.css";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-const ProductCreate = () => {
+const ProductCreate = ({ location }) => {
   const [name, setName] = useState(
     `Sample Name Product ${new Date().getTime()}`
   );
@@ -22,6 +22,7 @@ const ProductCreate = () => {
   const [description, setDescription] = useState("Sample Product Description");
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [errorUpload, setErrorUpload] = useState("");
+  const redirect = location.search ? `/${location.search.split("=")[1]}` : "/";
   const userSignin = useSelector((state) => state.userSignin);
   const { aboutUser } = userSignin;
   const productCreate = useSelector((state) => state.productCreate);
@@ -65,7 +66,7 @@ const ProductCreate = () => {
   useEffect(() => {
     if (success) {
       dispatch({ type: PRODUCT_CREATE_RESET });
-      history.push("/productlists");
+      history.push(`/productlists${redirect}`);
     }
   }, [success, history, dispatch]);
   return (

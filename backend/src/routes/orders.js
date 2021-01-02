@@ -1,11 +1,11 @@
 const express = require("express");
-const { isAuth, isAdmin } = require("../utils/check-auth");
+const { isAuth, isAdmin, isSellerOrAdmin } = require("../utils/check-auth");
 
 const orderController = require("../controllers/orders");
 
 const router = express.Router();
 
-router.get("/", isAuth, isAdmin, orderController.getAllOrders);
+router.get("/", isAuth, isSellerOrAdmin, orderController.getAllOrders);
 router.get("/orderhistory", isAuth, orderController.orderHistory);
 router.post("/", isAuth, orderController.createOrder);
 router.get("/:id", isAuth, orderController.orderDetail);

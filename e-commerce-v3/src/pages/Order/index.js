@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   deliveredOrder,
   detailOrder,
@@ -159,8 +159,6 @@ const Order = () => {
               sdkReady={sdkReady}
               handleSuccessPayment={handleSuccessPayment}
               handleDeliver={handleDeliver}
-              orderDeliver={orderDeliver}
-              orderPayment={orderPayment}
             />
           </div>
         </div>

@@ -1,0 +1,38 @@
+.sellerPage {
+  padding: 30px;
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sellerPage__left {
+  background: white;
+  padding: 1.2rem;
+  flex: 1 1 10rem;
+  height: fit-content;
+  border-radius: 20px;
+  margin: 0 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+  font-family: "Quicksand", sans-serif;
+}
+
+.sellerPage__left img {
+  width: 50px;
+}
+
+.sellerPage__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sellerPage__right {
+  flex: 3 1 30rem;
+}
+
+.sellerPage__product {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

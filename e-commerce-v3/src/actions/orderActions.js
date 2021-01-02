@@ -25,7 +25,6 @@ import {
 } from "../constants/orderConstants";
 
 export const createdOrder = (order) => async (dispatch, getState) => {
-  console.log(order);
   dispatch({ type: CREATE_ORDER_REQUEST });
   try {
     const {
@@ -94,7 +93,6 @@ export const paymentOrder = (order, paymentResult) => async (
   dispatch,
   getState
 ) => {
-  console.log("asdasd", paymentResult);
   dispatch({ type: ORDER_PAY_REQUEST });
   try {
     const {
@@ -119,13 +117,14 @@ export const paymentOrder = (order, paymentResult) => async (
   }
 };
 
-export const listOrders = () => async (dispatch, getState) => {
+export const listOrders = ({ seller = "" }) => async (dispatch, getState) => {
+  console.log("seller from action", seller);
   dispatch({ type: ORDER_LIST_REQUEST });
   try {
     const {
       userSignin: { aboutUser },
     } = getState();
-    const { data } = await Axios.get("/v1/orders", {
+    const { data } = await Axios.get(`/v1/orders?seller=${seller}`, {
       headers: { Authorization: `Bearer ${aboutUser.token}` },
     });
     dispatch({ type: ORDER_LIST_SUCCESS, payload: data });

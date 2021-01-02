@@ -25,8 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OrderList = () => {
+const OrderList = (props) => {
   const classes = useStyles();
+  const sellerMode = props.match.path.indexOf("/seller") >= 0;
   const [open, setOpen] = useState(false);
   const [orderId, setOrderId] = useState("");
   const theme = useTheme();
@@ -39,14 +40,16 @@ const OrderList = () => {
     error: errorDelete,
     success: successDelete,
   } = orderDelete;
+  const userSignin = useSelector((state) => state.userSignin);
+  const { aboutUser } = userSignin;
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
     if (successDelete) {
       dispatch({ type: ORDER_DELETE_RESET });
     }
-    dispatch(listOrders());
-  }, [dispatch, successDelete]);
+    dispatch(listOrders({ seller: sellerMode ? aboutUser._id : "" }));
+  }, [dispatch, successDelete, sellerMode, aboutUser]);
   const handleClickOpen = (order) => {
     setOpen(true);
     setOrderId(order._id);
@@ -84,7 +87,10 @@ const OrderList = () => {
             {orders.map((order) => (
               <tr key={order._id}>
                 <td className="orderList__tableUser">
-                  <Avatar className={classes.small} />
+                  <Avatar
+                    className={classes.small}
+                    src={order?.user?.photo_profile}
+                  />
                   {order?.user?.username}
                 </td>
                 <td>{order._id}</td>

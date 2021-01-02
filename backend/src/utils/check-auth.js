@@ -94,7 +94,7 @@ module.exports.isAuth = (req, res, next) => {
       process.env.JWT_SECRET || "secretbosasasdasd",
       (err, decode) => {
         if (err) {
-          console.log("this is error", err);
+          console.log("this is error", err.message);
           res.status(401).send({ message: "Invalid Token" });
         } else {
           req.user = decode;
@@ -112,5 +112,21 @@ module.exports.isAdmin = (req, res, next) => {
     next();
   } else {
     res.status(401).send({ message: "Invalid Admin Token" });
+  }
+};
+
+module.exports.isSeller = (req, res, next) => {
+  if (req.user && req.user.isSeller) {
+    next();
+  } else {
+    res.status(401).send({ message: "Invalid Seller Token" });
+  }
+};
+
+module.exports.isSellerOrAdmin = (req, res, next) => {
+  if (req.user && (req.user.isSeller || req.user.isAdmin)) {
+    next();
+  } else {
+    res.status(401).send({ message: "Invalid Admin/Seller Token" });
   }
 };

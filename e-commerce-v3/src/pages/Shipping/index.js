@@ -16,10 +16,14 @@ const Shipping = () => {
     postalCode: shippingAddress.postalCode,
     country: shippingAddress.country,
   });
+  const [lat, setLat] = useState(shippingAddress.lat);
+  const [lng, setLng] = useState(shippingAddress.lng);
   const dispatch = useDispatch();
   const history = useHistory();
   const userSignin = useSelector((state) => state.userSignin);
   const { aboutUser } = userSignin;
+  const userAddressMap = useSelector((state) => state.userAddressMap);
+  const { address: addressMap } = userAddressMap;
   if (!aboutUser) {
     history.push("/signin");
   }
@@ -28,8 +32,27 @@ const Shipping = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress(values));
+    const newLat = addressMap ? addressMap.lat : lat;
+    const newLng = addressMap ? addressMap.lng : lng;
+    if (addressMap) {
+      setLat(addressMap.lat);
+      setLng(addressMap.lng);
+    }
+    let moveOn = true;
+    if (!newLat || !newLng) {
+      moveOn = window.confirm(
+        "You did not set your location on map. Continue?"
+      );
+    }
+    if (moveOn) {
+      dispatch(saveShippingAddress(values));
+    }
     history.push("/paymentmethods");
+  };
+
+  const chooseOnMap = () => {
+    dispatch(saveShippingAddress({ ...values, lat, lng }));
+    history.push("/map");
   };
   return (
     <div className="shipping">
@@ -105,6 +128,12 @@ const Shipping = () => {
               onChange={handleChange("country")}
               required
             />
+          </div>
+          <div>
+            <label htmlFor="chooseOnMap">Location</label>
+            <button type="button" onClick={chooseOnMap} className="shipping_btnMap">
+              Choose On Map
+            </button>
           </div>
           <div>
             <button className="shipping__btn">Continue</button>

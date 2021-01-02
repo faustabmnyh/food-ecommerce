@@ -9,7 +9,7 @@ import { PRODUCT_UPDATE_RESET } from "../../constants/productConstants";
 import "./ProductEdit.css";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-const ProductEdit = () => {
+const ProductEdit = ({location}) => {
   let { productId } = useParams();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -17,6 +17,7 @@ const ProductEdit = () => {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
+  const redirect = location.search ? `/${location.search.split("=")[1]}` : "/";
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [errorUpload, setErrorUpload] = useState("");
   const productDetails = useSelector((state) => state.productDetails);
@@ -31,10 +32,9 @@ const ProductEdit = () => {
   } = productUpdate;
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(product);
   useEffect(() => {
     if (successUpdate) {
-      history.push("/productlists");
+      history.push(`/productlists${redirect}`);
     }
     if (!product || product._id !== productId || successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -47,7 +47,7 @@ const ProductEdit = () => {
       setCountInStock(product.stock_products);
       setDescription(product.description);
     }
-  }, [successUpdate, productId, product, history, dispatch]);
+  }, [successUpdate, productId, product, history, dispatch, redirect]);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(

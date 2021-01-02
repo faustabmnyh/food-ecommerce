@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../Message";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import {  paymentOrder } from "../../actions/orderActions";
+import { paymentOrder } from "../../actions/orderActions";
 import { useState } from "react";
 
 const OrderSummary = ({
@@ -13,10 +13,10 @@ const OrderSummary = ({
   sdkReady,
   handleSuccessPayment,
   handleDeliver,
-  orderPayment,
-  orderDeliver,
 }) => {
+  const orderPayment = useSelector((state) => state.orderPayment);
   const { error: errorPayment, loading: loadingPayment } = orderPayment;
+  const orderDeliver = useSelector((state) => state.orderDeliver);
   const { loading: loadingDeliver, error: errorDeliver } = orderDeliver;
   const [errorStripe, setErrorStripe] = useState("");
   const [loadingStripe, setLoadingStripe] = useState(false);

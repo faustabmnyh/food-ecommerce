@@ -7,15 +7,17 @@
   padding: 2rem;
   margin-left: 2rem;
   z-index: 12;
+  scroll-behavior: smooth;
 }
 
 .jumbotron h1 {
   font-weight: bolder;
   font-size: 3rem;
-  color: #0E1828;
+  color: #0e1828;
   font-family: "rubik", sans-serif;
   margin-bottom: 2rem;
 }
+
 .jumbotron__body {
   max-width: 400px;
   font-family: "poppins", sans-serif;

@@ -148,7 +148,19 @@
 }
 
 .header__dropdownContent.admin {
-  width: 250px;
+  width: 280px;
+  top: 45px;
+  left: 99%;
+  transform: translateX(-99%);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
+  background: white;
+  font-size: 14px;
+  z-index: 200;
+}
+
+.header__dropdownContent.admin-seller {
+  width: 450px;
   top: 45px;
   left: 99%;
   transform: translateX(-99%);
@@ -165,12 +177,16 @@
   margin: 5px 0;
 }
 .header__dropdownContent li:hover {
-  background-color: antiquewhite;
   background: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
 }
 
 .header__dropdownContent li a {
+  font-weight: bolder;
+  color: #1a3c65;
+}
+
+.header__dropdownContent li a:hover {
   font-weight: bolder;
   color: #1a3c65;
 }

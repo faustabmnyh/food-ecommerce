@@ -7,6 +7,7 @@ module.exports.generateToken = (user) => {
       username: user.username,
       email: user.email,
       isAdmin: user.isAdmin,
+      isSeller: user.isSeller,
     },
     process.env.JWT_SECRET || "secretbosasasdasd",
     { expiresIn: "2d" }

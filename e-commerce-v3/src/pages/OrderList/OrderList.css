@@ -1,52 +1,35 @@
 .orderList {
   padding: 2rem;
-  margin: auto;
-}
-
-.orderList__header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  align-items: center;
-}
-
-.orderList__header button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 170px;
-  height: 45px;
-  color: white;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-weight: bolder;
-  font-family: "Quicksand", sans-serif;
-  box-shadow: 5px 10px 20px rgba(26, 60, 101, 0.1);
-  background: linear-gradient(75deg, #1a3c65, #3a489e);
-}
-.orderList__header button:hover {
-  background: linear-gradient(75deg, rgb(11, 49, 95), rgb(26, 41, 156));
 }
 
 .orderList__table {
   width: 100%;
+  background-color: #1a3c65;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
   border-collapse: collapse;
   box-shadow: 5px 10px 20px rgba(26, 60, 101, 0.3);
 }
 
 .orderList__table td,
 .orderList__table th {
-  background: #012a4a;
-  text-align: center;
   padding: 10px;
-  color: white;
+}
+.orderList__table th {
+  background: #0e3361;
+}
+.orderList__table th:first-of-type {
+  border-top-left-radius: 20px;
 }
 
-.orderList__table th {
-  background: #1a3c65;
+.orderList__table th:last-of-type {
+  border-top-right-radius: 20px;
+}
+
+.orderList__tableUser {
+  display: flex;
+  align-items: center;
 }
 
 .orderList__table button {
@@ -66,17 +49,4 @@
 
 .orderList__table button:hover {
   background: rgba(255, 255, 255, 0.9);
-}
-
-.orderList__tableUser {
-  display: flex;
-  align-items: center;
-  height: 35px;
-}
-
-.orderList__goto {
-  color: white;
-}
-.orderList__goto:hover {
-  color: #bcf4f5;
 }

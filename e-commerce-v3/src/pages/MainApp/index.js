@@ -19,6 +19,12 @@ import ProductEdit from "../ProductEdit";
 import OrderList from "../OrderList";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import UserList from "../UserList";
+import UserUpdate from "../UserUpdate";
+import SellerRoute from "../SellerRoute";
+import SellerPage from "../SellerPage";
+import SearchPage from "../SearchPage";
+import MapPage from "../MapPage";
 
 const stripePromise = loadStripe(
   "pk_test_51HQog0E0XWms1zj7wB84LUGtu3SgDcN24mcCVEYNDnYrI0cgk6UEhzhAllq9FzQp8vyhafXIHjzYqVE17KcKUtBD00TvnOJfxm"
@@ -47,6 +53,29 @@ const MainApp = () => {
             component={ProductEdit}
           />
           <AdminRoute exact path="/orderlist" component={OrderList} />
+          <AdminRoute exact path="/userslist" component={UserList} />
+          <AdminRoute exact path="/user/:userId/edit" component={UserUpdate} />
+          <SellerRoute
+            exact
+            path="/productlists/seller"
+            component={ProductList}
+          />
+          <SellerRoute exact path="/orderlist/seller" component={OrderList} />
+          <Route exact path="/seller/:sellerId" component={SellerPage} />
+          <Route exact path="/search/name/:name?" component={SearchPage} />
+          <Route exact path="/shop" component={SearchPage} />
+          {/* <Route exact path="/search/category/:category" component={SearchPage} /> */}
+          <Route
+            exact
+            path="/search/category/:category/name/:name"
+            component={SearchPage}
+          />
+          <Route
+            exact
+            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order"
+            component={SearchPage}
+          />
+          <UserRoute exact path="/map" component={MapPage} />
         </main>
       </Elements>
       <Footer />

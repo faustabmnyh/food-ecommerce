@@ -63,6 +63,9 @@ app.use("/v1/orders", orderRouter);
 app.use("/v1/config/paypal", (_, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
+app.get("/v1/config/google", (req, res) => {
+  res.send(process.env.GOOGLE_API_KEY || "");
+});
 app.use(
   "/public/images",
   express.static(path.join(__dirname, "/public/images"))

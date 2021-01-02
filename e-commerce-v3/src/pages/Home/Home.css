@@ -1,6 +1,7 @@
 .home {
   position: relative;
   z-index: 11;
+  scroll-behavior: smooth;
 }
 
 .home__product {
@@ -9,6 +10,7 @@
   overflow-x: auto;
   margin-left: 2rem;
   padding: 25px;
+  scroll-behavior: smooth;
 }
 
 .home__product::-webkit-scrollbar {

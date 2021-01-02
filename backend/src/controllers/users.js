@@ -26,6 +26,8 @@ const userSignin = expressAsyncHandler(async (req, res) => {
         username: user.username,
         email: user.email,
         isAdmin: user.isAdmin,
+        isSeller: user.isSeller,
+        photo_profile: user.photo_profile,
         token: generateToken(user),
       });
       return;
@@ -72,6 +74,8 @@ const userRegister = expressAsyncHandler(async (req, res) => {
       username: createdUser.username,
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
+      isSeller: user.isSeller,
+      photo_profile: user.photo_profile,
       token: generateToken(user),
     });
   }
@@ -86,7 +90,7 @@ const getUser = expressAsyncHandler(async (req, res) => {
   }
 });
 
-const updateUser = expressAsyncHandler(async (req, res) => {
+const updateUserProfile = expressAsyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   const username = await User.findOne({ username: req.body.username });
   const email = await User.findOne({ email: req.body.email });
@@ -101,26 +105,33 @@ const updateUser = expressAsyncHandler(async (req, res) => {
     } else {
       if (username) {
         if (username.username === user.username) {
-          user.username = req.body.username || user.username;
+          user.username = req.body.username;
         } else {
           res
             .status(401)
             .send({ message: { username: "This username already exist" } });
+          return;
         }
       } else {
-        user.username = req.body.username || user.username;
+        user.username = req.body.username;
       }
       if (email) {
         if (email.email === user.email) {
-          user.email = req.body.email || user.email;
+          user.email = req.body.email;
         } else {
           res
             .status(401)
             .send({ message: { email: "This email already exist" } });
+          return;
         }
       } else {
-        user.email = req.body.email || user.email;
+        user.email = req.body.email;
       }
+    }
+    if (user.isSeller) {
+      user.seller.name = req.body.sellerName;
+      user.seller.logo = req.body.sellerLogo;
+      user.seller.description = req.body.description;
     }
     if (req.body.password) {
       const { valid, messages } = validateUserUpdatePassword(
@@ -134,12 +145,15 @@ const updateUser = expressAsyncHandler(async (req, res) => {
         user.password = bcrypt.hashSync(req.body.password);
       }
     }
+    user.photo_profile = req.body.image;
     const updatedUser = await user.save();
     res.send({
       _id: updatedUser._id,
       username: updatedUser.username,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
+      isSeller: user.isSeller,
+      photo_profile: user.photo_profile,
       token: generateToken(updatedUser),
     });
   }
@@ -150,10 +164,73 @@ const getAllUser = expressAsyncHandler(async (req, res) => {
   res.send(users);
 });
 
+const deleteUser = expressAsyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (user) {
+    if (user.isAdmin) {
+      res.status(400).send({ message: "Can Not Delete Admin User" });
+      return;
+    }
+    const deletedUser = await user.remove();
+    res.send({ message: "User Deleted", user: deletedUser });
+  } else {
+    res.status(404).send({ message: "User Not Found" });
+  }
+});
+
+const updateUser = expressAsyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  const username = await User.findOne({ username: req.body.username });
+  const email = await User.findOne({ email: req.body.email });
+  if (user) {
+    const { valid, messages } = validateUserUpdate(
+      req.body.username,
+      req.body.email
+    );
+    if (!valid) {
+      res.status(401).send({ message: messages });
+      return;
+    } else {
+      if (username) {
+        if (username.username === user.username) {
+          user.username = req.body.username;
+        } else {
+          res
+            .status(401)
+            .send({ message: { username: "This username already exist" } });
+          return;
+        }
+      } else {
+        user.username = req.body.username;
+      }
+      if (email) {
+        if (email.email === user.email) {
+          user.email = req.body.email;
+        } else {
+          res
+            .status(401)
+            .send({ message: { email: "This email already exist" } });
+          return;
+        }
+      } else {
+        user.email = req.body.email;
+      }
+    }
+    user.isSeller = req.body.isSeller;
+    user.isAdmin = req.body.isAdmin;
+    const updatedUser = await user.save();
+    res.send({ message: "User Updated", user: updatedUser });
+  } else {
+    res.status(404).send({ message: "User Not Found" });
+  }
+});
+
 module.exports = {
   userRegister,
   userSignin,
   getUser,
+  updateUserProfile,
   updateUser,
   getAllUser,
+  deleteUser,
 };

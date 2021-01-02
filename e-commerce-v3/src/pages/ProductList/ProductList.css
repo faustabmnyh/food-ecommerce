@@ -1,6 +1,6 @@
 .productList {
   padding: 2rem;
-  margin: auto;
+  font-family: "Quicksand", sans-serif;
 }
 
 .productList__header {
@@ -8,6 +8,36 @@
   justify-content: space-between;
   margin-bottom: 10px;
   align-items: center;
+}
+
+.productList__table {
+  width: 100%;
+  background: #1a3c65;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  border-collapse: collapse;
+  box-shadow: 5px 10px 20px rgba(26, 60, 101, 0.3);
+}
+
+.productList__table td,
+.productList__table th {
+  padding: 10px;
+}
+.productList__table th {
+  background: #0e3361;
+}
+.productList__table th:first-of-type {
+  border-top-left-radius: 20px;
+}
+
+.productList__table th:last-of-type {
+  border-top-right-radius: 20px;
+}
+
+.productList__image {
+  max-width: 70px;
+  width: 100%;
 }
 
 .productList__header button {
@@ -31,27 +61,9 @@
   background: linear-gradient(75deg, rgb(11, 49, 95), rgb(26, 41, 156));
 }
 
-.productList__image {
-  max-width: 70px;
-  width: 100%;
-}
-
-.productList__table {
-  width: 100%;
-  border-collapse: collapse;
-  box-shadow: 5px 10px 20px rgba(26, 60, 101, 0.3);
-}
-
-.productList__table td,
-.productList__table th {
-  background: #012a4a;
-  text-align: center;
-  padding: 5px;
-  color: white;
-}
-
-.productList__table th {
-  background: #1a3c65;
+.productList__tableUser {
+  display: flex;
+  align-items: center;
 }
 
 .productList__table button {

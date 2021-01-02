@@ -1,7 +1,9 @@
 import "./Jumbotron.css";
 import StorefrontIcon from "@material-ui/icons/Storefront";
+import { useHistory } from "react-router-dom";
 
 const Jumbotron = () => {
+  const history = useHistory();
   return (
     <div className="jumbotron">
       <div>
@@ -20,8 +22,13 @@ const Jumbotron = () => {
           </p>
         </div>
         <div className="jumbotron__btnContainer">
-          <button className="jumbotron__btn">Buy Now</button>
-          <button className="jumbotron__btn last">
+          <a href="#buynow">
+            <button className="jumbotron__btn">Buy Now</button>
+          </a>
+          <button
+            className="jumbotron__btn last"
+            onClick={() => history.push("/shop")}
+          >
             Go To Shop <StorefrontIcon style={{ marginLeft: "0.5rem" }} />
           </button>
         </div>

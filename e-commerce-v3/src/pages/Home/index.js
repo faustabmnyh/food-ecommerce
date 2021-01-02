@@ -12,7 +12,7 @@ const Home = () => {
   const productLists = useSelector((state) => state.productLists);
   const { loading, products, error } = productLists;
   useEffect(() => {
-    dispatch(listProducts());
+    dispatch(listProducts({}));
   }, [dispatch]);
   return loading ? (
     <Loading />
@@ -21,9 +21,9 @@ const Home = () => {
   ) : (
     <div className="home">
       <Jumbotron />
-      <div className="home__product">
+      <div className="home__product" id="buynow">
         {products.map((product) => (
-          <Product product={product} />
+          <Product key={product._id} product={product} />
         ))}
       </div>
     </div>

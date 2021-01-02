@@ -1,0 +1,58 @@
+.userList {
+  padding: 2rem;
+}
+
+.userList__table {
+  width: 100%;
+  background-color: #1a3c65;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+  border-collapse: collapse;
+  box-shadow: 5px 10px 20px rgba(26, 60, 101, 0.3);
+}
+
+.userList__table td,
+.userList__table th {
+  padding: 10px;
+}
+.userList__table th {
+  background: #0e3361;
+}
+.userList__table th:first-of-type {
+  border-top-left-radius: 20px;
+}
+
+.userList__table th:last-of-type {
+  border-top-right-radius: 20px;
+}
+
+.user__profile {
+  display: flex;
+  align-items: center;
+}
+
+.userList__user {
+  display: flex;
+  align-items: center;
+}
+
+.userList__btn {
+  width: 70px;
+  height: 35px;
+  font-family: "Quicksand", sans-serif;
+  color: #1a3c65;
+  border-radius: 8px;
+  background: white;
+  border: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+}
+
+.userList__btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+}

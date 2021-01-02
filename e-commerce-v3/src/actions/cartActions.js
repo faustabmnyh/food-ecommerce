@@ -8,7 +8,6 @@ import {
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
   const { data } = await Axios.get(`/v1/products/${productId}`);
-  console.log("ad", productId);
   dispatch({ type: ADD_TO_CART, payload: { ...data, qty } });
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };

@@ -16,7 +16,8 @@ import {
 } from "@material-ui/core";
 import { PRODUCT_DELETE_RESET } from "../../constants/productConstants";
 
-const ProductList = () => {
+const ProductList = (props) => {
+  const sellerMode = props.match.path.indexOf("/seller") >= 0;
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
@@ -31,12 +32,14 @@ const ProductList = () => {
     success: successDelete,
     error: errorDelete,
   } = productDelete;
+  const userSignin = useSelector((state) => state.userSignin);
+  const { aboutUser } = userSignin;
   useEffect(() => {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listAllProducts());
-  }, [dispatch, successDelete]);
+    dispatch(listAllProducts({ seller: sellerMode ? aboutUser._id : "" }));
+  }, [dispatch, successDelete, sellerMode, aboutUser]);
   const handleClickOpen = (product) => {
     setOpen(true);
     setProductId(product._id);
@@ -53,7 +56,13 @@ const ProductList = () => {
     <div className="productList">
       <div className="productList__header">
         <h1>Products</h1>
-        <button onClick={() => history.push("/productcreate")}>
+        <button
+          onClick={() =>
+            history.push(
+              sellerMode ? "/productcreate?redirect=seller" : "/productcreate"
+            )
+          }
+        >
           Create Product <FastfoodIcon style={{ marginLeft: "5px" }} />
         </button>
       </div>
@@ -109,7 +118,13 @@ const ProductList = () => {
                   <button
                     className="productList__editBtn"
                     type="button"
-                    onClick={() => history.push(`/product/${product._id}/edit`)}
+                    onClick={() =>
+                      history.push(
+                        sellerMode
+                          ? `/product/${product._id}/edit?redirect=seller`
+                          : `/product/${product._id}/edit`
+                      )
+                    }
                   >
                     Edit
                   </button>

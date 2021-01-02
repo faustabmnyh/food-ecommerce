@@ -15,6 +15,12 @@ import {
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
+  USER_DELETE_REQUEST,
+  USER_DELETE_SUCCESS,
+  USER_DELETE_FAIL,
+  UPDATE_USER_ADMIN_REQUEST,
+  UPDATE_USER_ADMIN_SUCCESS,
+  UPDATE_USER_ADMIN_FAIL,
 } from "../constants/userConstants";
 import Axios from "axios";
 
@@ -94,6 +100,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     const { data } = await Axios.put("/v1/users/profile", user, {
       headers: { Authorization: `Bearer ${aboutUser.token}` },
     });
+
     dispatch({ type: UPDATE_USER_SUCCESS, payload: data });
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     localStorage.setItem("aboutUser", JSON.stringify(data));
@@ -121,6 +128,70 @@ export const listUsers = () => async (dispatch, getState) => {
   } catch (err) {
     dispatch({
       type: USER_LIST_FAIL,
+      payload:
+        err.response && err.response.data.message
+          ? err.response.data.message
+          : err.message,
+    });
+  }
+};
+
+export const deleteUser = (userId) => async (dispatch, getState) => {
+  dispatch({ type: USER_DELETE_REQUEST });
+  try {
+    const {
+      userSignin: { aboutUser },
+    } = getState();
+    const { data } = await Axios.delete(`/v1/users/${userId}`, {
+      headers: { Authorization: `Bearer ${aboutUser.token}` },
+    });
+    dispatch({ type: USER_DELETE_SUCCESS, payload: data });
+  } catch (err) {
+    dispatch({
+      type: USER_DELETE_FAIL,
+      payload:
+        err.response && err.response.data.message
+          ? err.response.data.message
+          : err.message,
+    });
+  }
+};
+
+export const updateUser = (user) => async (dispatch, getState) => {
+  dispatch({ type: UPDATE_USER_ADMIN_REQUEST });
+  try {
+    const {
+      userSignin: { aboutUser },
+    } = getState();
+    const { data } = await Axios.put(`/v1/users/${user._id}`, user, {
+      headers: { Authorization: `Bearer ${aboutUser.token}` },
+    });
+    dispatch({ type: UPDATE_USER_ADMIN_SUCCESS, payload: data });
+    if (data.user._id === aboutUser._id) {
+      dispatch({
+        type: USER_SIGNIN_SUCCESS,
+        payload: {
+          ...aboutUser,
+          isAdmin: data.user.isAdmin,
+          isSeller: data.user.isSeller,
+          username: data.user.username,
+          email: data.user.email,
+        },
+      });
+      localStorage.setItem(
+        "aboutUser",
+        JSON.stringify({
+          ...aboutUser,
+          isAdmin: data.user.isAdmin,
+          isSeller: data.user.isSeller,
+          username: data.user.username,
+          email: data.user.email,
+        })
+      );
+    }
+  } catch (err) {
+    dispatch({
+      type: UPDATE_USER_ADMIN_FAIL,
       payload:
         err.response && err.response.data.message
           ? err.response.data.message

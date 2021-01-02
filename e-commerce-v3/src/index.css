@@ -103,6 +103,10 @@ select:hover {
   margin: 0.1rem;
 }
 
+.rating p {
+  margin: 0 5px;
+}
+
 .rating {
   display: flex;
   align-items: center;
@@ -146,7 +150,8 @@ select:hover {
 }
 
 .alert {
-  padding: 1rem;
+  margin-top: 5px;
+  padding: 10px;
   border: 0.1rem solid transparent;
   border-radius: 0.5rem;
 }
@@ -189,4 +194,40 @@ select:hover {
   font-family: "quicksand";
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+.active {
+  font-weight: bold;
+}
+
+/* Map */
+.full-container {
+  height: 100%;
+}
+
+.map-input-box {
+  position: absolute;
+  left: 50%;
+  margin-top: 10px;
+  transform: translateX(-50%);
+  height: 40px;
+  display: flex;
+}
+.map-input-box input {
+  border-radius: 10px 0 0 10px;
+  border-right: 0;
+  width: 400px;
+  outline: none;
+  padding: 10px;
+  border: 1px solid gray;
+}
+.map-input-box button {
+  border-radius: 0 10px 10px 0;
+  border-left: 0;
+  background: #1a3c65;
+  outline: none;
+  width: 90px;
+  border: none;
+  cursor: pointer;
+  color: white;
 }

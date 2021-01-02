@@ -50,7 +50,6 @@
   margin-bottom: 5px;
 }
 
-
 .product__rating {
   display: flex;
   justify-content: center;
@@ -60,15 +59,20 @@
 
 .product__footer {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product__footerPrice {
+  display: flex;
   align-items: center;
 }
 
-.product__footer strong {
+.product__footerPrice strong {
   font-size: 1.2rem;
 }
 
-.product__footer button {
+.product__footerPrice button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,4 +86,8 @@
   cursor: pointer;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.25);
   background: linear-gradient(75deg, #1a3c65, #3a489e);
+}
+
+.product__seller strong {
+  font-size: 14px;
 }

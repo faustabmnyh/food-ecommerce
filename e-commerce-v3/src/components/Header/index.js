@@ -1,6 +1,6 @@
 import "./Header.css";
 import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
 import { signout } from "../../actions/userActions";
@@ -17,7 +17,9 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const classes = useStyles();
   const [show, setShow] = useState(false);
+  const [name, setName] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const userSignin = useSelector((state) => state.userSignin);
@@ -36,7 +38,12 @@ const Header = () => {
         window.removeEventListener("scroll");
       };
     });
-  }, []);
+  }, [dispatch]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push(`/search/name/${name}`);
+  };
+
   return (
     <header className={show && "show"}>
       <div className="header">
@@ -48,30 +55,30 @@ const Header = () => {
               </Link>
             </li>
             <li className="header__links">
-              <Link>Healthy Food</Link>
+              <Link>Best Sellers</Link>
             </li>
             <li className="header__links">
-              <Link>Dessert</Link>
+              <Link>Hot Offers</Link>
             </li>
             <li className="header__links">
-              <Link>Pizza</Link>
-            </li>
-            <li className="header__links">
-              <Link>Salad</Link>
-            </li>
-            <li className="header__links">
-              <Link>Shop</Link>
+              <Link to="/shop">Shop</Link>
             </li>
           </ul>
         </div>
         <div className="header__right">
           <ul className="header__items">
             <li className="header__cart">
-              <form className="header__cartInput">
+              <form className="header__cartInput" onSubmit={handleSubmit}>
                 <label htmlFor="search" className="header__searchBtn">
                   <SearchIcon />
                 </label>
-                <input id="search" type="text" placeholder="Search..." />
+                <input
+                  id="search"
+                  type="text"
+                  placeholder="Search..."
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </form>
               <div className="header__cartBtnContainer">
                 <div
@@ -96,12 +103,17 @@ const Header = () => {
               ) : (
                 <div className="header__userProfileDropdown">
                   <div className="header__userProfile">
-                    <Avatar className={classes.small} />
+                    <Avatar
+                      className={classes.small}
+                      src={aboutUser.photo_profile}
+                    />
                     <p>{aboutUser.username}</p>
                   </div>
                   <ul
                     className={
-                      aboutUser && aboutUser.isAdmin
+                      aboutUser && aboutUser.isAdmin && aboutUser.isSeller
+                        ? "header__dropdownContent admin-seller"
+                        : aboutUser && (aboutUser.isAdmin || aboutUser.isSeller)
                         ? "header__dropdownContent admin"
                         : "header__dropdownContent"
                     }
@@ -122,16 +134,38 @@ const Header = () => {
                     {aboutUser && aboutUser.isAdmin && (
                       <div>
                         <li>
-                          <Link to="/dashboard">Dashboard</Link>
+                          <Link to="/dashboard">
+                            Dashboard <small>(admin)</small>
+                          </Link>
                         </li>
                         <li>
-                          <Link to="/productlists">Products</Link>
+                          <Link to="/productlists">
+                            Products <small>(admin)</small>
+                          </Link>
                         </li>
                         <li>
-                          <Link to="/orderlist">Orders</Link>
+                          <Link to="/orderlist">
+                            Orders <small>(admin)</small>
+                          </Link>
                         </li>
                         <li>
-                          <Link to="/userslist">Users</Link>
+                          <Link to="/userslist">
+                            Users <small>(admin)</small>
+                          </Link>
+                        </li>
+                      </div>
+                    )}
+                    {aboutUser && aboutUser.isSeller && (
+                      <div>
+                        <li>
+                          <Link to="/productlists/seller">
+                            Products <small>(seller)</small>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/orderlist/seller">
+                            Orders <small>(seller)</small>
+                          </Link>
                         </li>
                       </div>
                     )}

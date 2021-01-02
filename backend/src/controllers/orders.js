@@ -3,7 +3,12 @@ const expressAsyncHandler = require("express-async-handler");
 const Order = require("../models/Order");
 
 const getAllOrders = expressAsyncHandler(async (req, res) => {
-  const orders = await Order.find({}).populate("user", "username");
+  const seller = req.query.seller || "";
+  const sellerFilter = seller ? { seller } : {};
+  const orders = await Order.find({ ...sellerFilter }).populate(
+    "user",
+    "username photo_profile"
+  );
   res.send(orders);
 });
 
@@ -20,8 +25,10 @@ const createOrder = expressAsyncHandler(async (req, res) => {
   if (req.body.orderItems.length === 0) {
     res.status(400).send({ message: "Cart is empty" });
   } else {
+    console.log("orderItems", req.body.orderItems);
     const order = new Order({
       orderItems: req.body.orderItems,
+      seller: req.body.orderItems[0].seller,
       shippingAddress: req.body.shippingAddress,
       paymentMethod: req.body.paymentMethod,
       itemsPrice: req.body.itemsPrice,
