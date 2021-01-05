@@ -5,11 +5,7 @@ import Loading from "../../components/Loading";
 import Message from "../../components/Message";
 import Rating from "../../components/Rating";
 import "./ProductDetails.css";
-import {
-  createReview,
-  detailsProduct,
-  listAllProducts,
-} from "../../actions/productActions";
+import { createReview, detailsProduct } from "../../actions/productActions";
 import {
   Avatar,
   Button,
@@ -40,12 +36,6 @@ const ProductDetails = () => {
     error: errorReviewCreate,
     success: successReviewCreate,
   } = productReviewCreate;
-  const productAllLists = useSelector((state) => state.productAllLists);
-  const {
-    loading: loadingProducts,
-    error: errorProducts,
-    products,
-  } = productAllLists;
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   useEffect(() => {
@@ -56,13 +46,8 @@ const ProductDetails = () => {
       setComment("");
       dispatch({ type: PRODUCT_REVIEW_CREATE_RESET });
     }
-    if (!product) {
-      dispatch(detailsProduct(productId));
-    }
-    if (product) {
-      dispatch(listAllProducts({ seller: product?.seller?._id }));
-    }
-  }, [dispatch, productId, successReviewCreate, product]);
+    dispatch(detailsProduct(productId));
+  }, [dispatch, productId, successReviewCreate]);
   const handleClose = () => {
     setOpen(false);
   };
@@ -124,21 +109,6 @@ const ProductDetails = () => {
                     <Link to={`/seller/${product.seller?._id}`}>
                       {product?.seller?.seller?.name}
                     </Link>
-                    {loadingProducts ? null : errorProducts ? (
-                      <Message condition="danger">{errorProducts}</Message>
-                    ) : (
-                      <Rating
-                        numReviews={products?.reduce(
-                          (a, c) => c.num_reviews + a,
-                          0
-                        )}
-                        rating={
-                          products?.reduce((a, c) => c.rating + a, 0) /
-                          products?.length
-                        }
-                        caption=" "
-                      />
-                    )}
                   </div>
                 </li>
               )}
@@ -201,8 +171,8 @@ const ProductDetails = () => {
               <div className="productDetails__reviewUser">
                 <Avatar
                   src={review.photo_profile}
-                  style={{ marginRight: "10px" }}
-                />{" "}
+                  className="productDetails__photo"
+                />
                 {review.username}
               </div>
               <div className="productDetails__reviewDate">

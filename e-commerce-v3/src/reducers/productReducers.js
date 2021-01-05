@@ -61,7 +61,9 @@ export const productAllListReducer = (
     case PRODUCT_LIST_SHOP_SUCCESS:
       return {
         loading: false,
-        products: action.payload,
+        products: action.payload.products,
+        pages: action.payload.pages,
+        page: action.payload.page,
       };
     case PRODUCT_LIST_SHOP_FAIL:
       return {

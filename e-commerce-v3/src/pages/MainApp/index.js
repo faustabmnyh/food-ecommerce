@@ -45,7 +45,17 @@ const MainApp = () => {
           <Route exact path="/order/:orderId" component={Order} />
           <UserRoute exact path="/orderhistory" component={OrderHistory} />
           <UserRoute exact path="/profile" component={Profile} />
+          <AdminRoute
+            exact
+            path="/productlists/name/:name/pageNumber/:pageNumber"
+            component={ProductList}
+          />
           <AdminRoute exact path="/productlists" component={ProductList} />
+          <AdminRoute
+            exact
+            path="/productlists/name/:name?"
+            component={ProductList}
+          />
           <AdminRoute exact path="/productcreate" component={ProductCreate} />
           <AdminRoute
             exact
@@ -53,7 +63,17 @@ const MainApp = () => {
             component={ProductEdit}
           />
           <AdminRoute exact path="/orderlist" component={OrderList} />
+          <AdminRoute
+            exact
+            path="/orderlist/pageNumber/:pageNumber"
+            component={OrderList}
+          />
           <AdminRoute exact path="/userslist" component={UserList} />
+          <AdminRoute
+            exact
+            path="/userslist/pageNumber/:pageNumber"
+            component={UserList}
+          />
           <AdminRoute exact path="/user/:userId/edit" component={UserUpdate} />
           <SellerRoute
             exact
@@ -61,6 +81,11 @@ const MainApp = () => {
             component={ProductList}
           />
           <SellerRoute exact path="/orderlist/seller" component={OrderList} />
+          <SellerRoute
+            exact
+            path="/orderlist/seller/pageNumber/:pageNumber"
+            component={OrderList}
+          />
           <Route exact path="/seller/:sellerId" component={SellerPage} />
           <Route exact path="/search/name/:name?" component={SearchPage} />
           <Route exact path="/shop" component={SearchPage} />
@@ -72,7 +97,7 @@ const MainApp = () => {
           />
           <Route
             exact
-            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order"
+            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber"
             component={SearchPage}
           />
           <UserRoute exact path="/map" component={MapPage} />

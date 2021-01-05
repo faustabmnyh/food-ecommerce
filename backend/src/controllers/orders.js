@@ -3,13 +3,16 @@ const expressAsyncHandler = require("express-async-handler");
 const Order = require("../models/Order");
 
 const getAllOrders = expressAsyncHandler(async (req, res) => {
+  const page = Number(req.query.pageNumber) || 1;
+  const pageSize = 10;
   const seller = req.query.seller || "";
   const sellerFilter = seller ? { seller } : {};
-  const orders = await Order.find({ ...sellerFilter }).populate(
-    "user",
-    "username photo_profile"
-  );
-  res.send(orders);
+  const count = await Order.countDocuments({ ...sellerFilter });
+  const orders = await Order.find({ ...sellerFilter })
+    .populate("user", "username photo_profile")
+    .skip(pageSize * (page - 1))
+    .limit(pageSize);
+  res.send({ orders, page, pages: Math.ceil(count / pageSize) });
 });
 
 const orderDetail = expressAsyncHandler(async (req, res) => {

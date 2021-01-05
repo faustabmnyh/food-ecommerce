@@ -160,8 +160,13 @@ const updateUserProfile = expressAsyncHandler(async (req, res) => {
 });
 
 const getAllUser = expressAsyncHandler(async (req, res) => {
-  const users = await User.find({});
-  res.send(users);
+  const page = Number(req.query.pageNumber) || 1;
+  const pageSize = 10;
+  const count = await User.countDocuments({});
+  const users = await User.find({})
+    .skip(pageSize * (page - 1))
+    .limit(pageSize);
+  res.send({ users, page, pages: Math.ceil(count / pageSize) });
 });
 
 const deleteUser = expressAsyncHandler(async (req, res) => {

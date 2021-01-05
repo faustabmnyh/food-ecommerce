@@ -1,4 +1,5 @@
 const expressAsyncHandler = require("express-async-handler");
+const { count } = require("../models/Product");
 const Product = require("../models/Product");
 
 const getProducts = expressAsyncHandler(async (req, res) => {
@@ -11,6 +12,8 @@ const getProducts = expressAsyncHandler(async (req, res) => {
 });
 
 const getAllProducts = expressAsyncHandler(async (req, res) => {
+  const page = Number(req.query.pageNumber) || 1;
+  const pageSize = 10;
   const name = req.query.name;
   const seller = req.query.seller;
   const category = req.query.category;
@@ -36,6 +39,13 @@ const getAllProducts = expressAsyncHandler(async (req, res) => {
       : order === "toprated"
       ? { rating: -1 }
       : { _id: -1 };
+  const count = await Product.countDocuments({
+    ...sellerFilter,
+    ...nameFilter,
+    ...categoryFilter,
+    ...priceFilter,
+    ...ratingFilter,
+  });
   const products = await Product.find({
     ...sellerFilter,
     ...nameFilter,
@@ -44,8 +54,10 @@ const getAllProducts = expressAsyncHandler(async (req, res) => {
     ...ratingFilter,
   })
     .populate("seller", "seller.name seller.logo")
-    .sort(sortOrder);
-  res.send(products);
+    .sort(sortOrder)
+    .skip(pageSize * (page - 1))
+    .limit(pageSize);
+  res.send({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 const productDetails = expressAsyncHandler(async (req, res) => {

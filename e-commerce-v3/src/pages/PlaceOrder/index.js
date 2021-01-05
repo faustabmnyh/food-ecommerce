@@ -31,9 +31,9 @@ const PlaceOrder = () => {
     }
   }, [success, history, order, dispatch]);
   return (
-    <div>
+    <div className="placeOrder">
       <Stepper stepOne stepTwo stepThree stepFour />
-      <div className="placeOrder">
+      <div className="placeOrder__content">
         <div className="placeOrder__left">
           <ul>
             <div className="placeOrder__container">
@@ -67,7 +67,7 @@ const PlaceOrder = () => {
             </div>
             <li>
               <div className="placeOrder__container">
-                <h2>Order Items</h2>
+                <h3>Order Items</h3>
                 <ul>
                   {cart.cartItems.map((cartItem) => (
                     <li key={cartItem._id}>

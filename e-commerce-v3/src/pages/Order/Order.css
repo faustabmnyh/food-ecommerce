@@ -1,8 +1,9 @@
-.order {
+.order__content {
   display: flex;
   padding: 2rem;
   font-family: "quicksand";
   justify-content: space-between;
+  flex-wrap: wrap-reverse;
 }
 
 .order__container {
@@ -14,10 +15,10 @@
 }
 .order__left {
   margin-right: 20px;
-  flex: 0.7;
+  flex: 3 1 30rem;
 }
 .order__right {
-  flex: 0.3;
+  flex: 1 1 20rem;
 }
 
 .order h2 {
@@ -35,6 +36,7 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .order__cardBook {
@@ -48,4 +50,63 @@
   border-radius: 20px;
   margin-right: 15px;
   filter: drop-shadow(3px 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 880px) {
+  .order__left {
+    margin-right: 0px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .order {
+    padding: 3rem;
+  }
+
+  .order__container {
+    font-size: 21px;
+    border-radius: 25px;
+    padding: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .order__left {
+    margin-right: 40px;
+  }
+  .order h3 {
+    font-size: 1.7rem;
+  }
+  .order h2 {
+    font-size: 1.8rem;
+  }
+
+  .order__cardImg {
+    max-width: 6.5rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .order {
+    padding: 6rem;
+  }
+
+  .order__container {
+    font-size: 35px;
+    border-radius: 50px;
+    padding: 3rem;
+    margin-bottom: 25px;
+  }
+  .order__left {
+    margin-right: 40px;
+  }
+  .order h3 {
+    font-size: 3rem;
+  }
+
+  .order h2 {
+    font-size: 3.1rem;
+  }
+
+  .order__cardImg {
+    max-width: 10rem;
+  }
 }

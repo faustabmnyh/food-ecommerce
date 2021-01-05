@@ -44,3 +44,26 @@
 .placeOrderSummary__btn:hover {
   background: #0b3364;
 }
+
+@media (min-width: 1440px) {
+  .placeOrderSummary__btn {
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .placeOrderSummary__btn:disabled {
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 2560px) {
+  .placeOrderSummary__btn {
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .placeOrderSummary__btn:disabled {
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}

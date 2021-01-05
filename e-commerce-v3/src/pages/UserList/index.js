@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { deleteUser, listUsers } from "../../actions/userActions";
 import Loading from "../../components/Loading";
 import Message from "../../components/Message";
@@ -19,6 +19,8 @@ import {
   USER_DETAILS_RESET,
 } from "../../constants/userConstants";
 import "./UserList.css";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 const useStyles = makeStyles((theme) => ({
   small: {
@@ -35,7 +37,7 @@ const UserList = () => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const userList = useSelector((state) => state.userList);
-  const { loading, error, users } = userList;
+  const { loading, error, users, page, pages } = userList;
   const userDelete = useSelector((state) => state.userDelete);
   const {
     loading: loadingDelete,
@@ -153,6 +155,39 @@ const UserList = () => {
             ))}
           </tbody>
         </table>
+      )}
+      {pages > 1 && (
+        <div className="pagination">
+          {page > 1 && (
+            <button
+              onClick={() => history.push(`/userslist/pageNumber/${page - 1}`)}
+            >
+              <ArrowBackIosIcon
+                style={{ fontSize: "16px", marginRight: "5px" }}
+              />
+              PREV
+            </button>
+          )}
+          {[...Array(pages).keys()].map((p) => (
+            <Link
+              className={p + 1 === page ? "active" : ""}
+              key={p + 1}
+              to={`/userslist/pageNumber/${p + 1}`}
+            >
+              {p + 1}
+            </Link>
+          ))}
+          {pages > page && (
+            <button
+              onClick={() => history.push(`/userslist/pageNumber/${page + 1}`)}
+            >
+              NEXT
+              <ArrowForwardIosIcon
+                style={{ fontSize: "16px", marginLeft: "5px" }}
+              />
+            </button>
+          )}
+        </div>
       )}
     </div>
   );

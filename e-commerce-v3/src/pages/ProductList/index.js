@@ -4,7 +4,7 @@ import { deletedProduct, listAllProducts } from "../../actions/productActions";
 import "./ProductList.css";
 import Loading from "../../components/Loading";
 import Message from "../../components/Message";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import {
   Button,
@@ -15,17 +15,22 @@ import {
   useTheme,
 } from "@material-ui/core";
 import { PRODUCT_DELETE_RESET } from "../../constants/productConstants";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import SearchIcon from "@material-ui/icons/Search";
 
 const ProductList = (props) => {
+  let { pageNumber = 1 } = useParams();
   const sellerMode = props.match.path.indexOf("/seller") >= 0;
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
   const [productId, setProductId] = useState("");
+  const [name, setName] = useState("");
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const productAllLists = useSelector((state) => state.productAllLists);
-  const { loading, error, products } = productAllLists;
+  const { loading, error, products, page, pages } = productAllLists;
   const productDelete = useSelector((state) => state.productDelete);
   const {
     loading: loadingDelete,
@@ -38,8 +43,14 @@ const ProductList = (props) => {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listAllProducts({ seller: sellerMode ? aboutUser._id : "" }));
-  }, [dispatch, successDelete, sellerMode, aboutUser]);
+    dispatch(
+      listAllProducts({
+        name: name !== "all" ? name : "",
+        seller: sellerMode ? aboutUser._id : "",
+        pageNumber,
+      })
+    );
+  }, [dispatch, successDelete, sellerMode, aboutUser, pageNumber, name]);
   const handleClickOpen = (product) => {
     setOpen(true);
     setProductId(product._id);
@@ -52,8 +63,22 @@ const ProductList = (props) => {
     dispatch(deletedProduct(productId));
     setOpen(false);
   };
+
   return (
     <div className="productList">
+      <form className="form-input-list">
+        <label htmlFor="input-list">
+          <SearchIcon />
+        </label>
+        <input
+          type="text"
+          id="input-list"
+          className="input-list"
+          value={name}
+          placeholder="Search Product List..."
+          onChange={(e) => setName(e.target.value)}
+        />
+      </form>
       <div className="productList__header">
         <h1>Products</h1>
         <button
@@ -158,6 +183,55 @@ const ProductList = (props) => {
             ))}
           </tbody>
         </table>
+      )}
+      {pages > 1 && (
+        <div className="pagination">
+          {page > 1 && (
+            <button
+              onClick={() =>
+                history.push(
+                  sellerMode
+                    ? `/productlists/seller/pageNumber/${page - 1}`
+                    : `/productlists/pageNumber/${page - 1}`
+                )
+              }
+            >
+              <ArrowBackIosIcon
+                style={{ fontSize: "16px", marginRight: "5px" }}
+              />
+              PREV
+            </button>
+          )}
+          {[...Array(pages).keys()].map((p) => (
+            <Link
+              className={p + 1 === page ? "active" : ""}
+              key={p + 1}
+              to={
+                sellerMode
+                  ? `/productlists/seller/pageNumber/${p + 1}`
+                  : `/productlists/pageNumber/${p + 1}`
+              }
+            >
+              {p + 1}
+            </Link>
+          ))}
+          {pages > page && (
+            <button
+              onClick={() =>
+                history.push(
+                  sellerMode
+                    ? `/productlists/seller/pageNumber/${page + 1}`
+                    : `/productlists/pageNumber/${page + 1}`
+                )
+              }
+            >
+              NEXT
+              <ArrowForwardIosIcon
+                style={{ fontSize: "16px", marginLeft: "5px" }}
+              />
+            </button>
+          )}
+        </div>
       )}
     </div>
   );

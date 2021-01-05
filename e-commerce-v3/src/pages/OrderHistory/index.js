@@ -12,12 +12,10 @@ const OrderHistory = () => {
   const { loading, orders, error } = orderHistoryList;
   const history = useHistory();
   const dispatch = useDispatch();
-  console.log(orders);
   useEffect(() => {
     dispatch(orderHistory());
   }, [dispatch]);
   const handleBuyAgain = (products) => {
-    console.log(products);
     products.map((product) => dispatch(addToCart(product._id, product.qty)));
   };
   return loading ? (
@@ -70,9 +68,8 @@ const OrderHistory = () => {
 
                 <div className="orderHistory__bodyBot">
                   <div className="orderHistory__price">
-                    <div>
+                    <div className="orderHistory__detailsOrder">
                       <h2>Details Order : </h2>
-                      {/* <div className="orderHistory__paymentDetails"> */}
                       <div>
                         <p>Paid :</p>
                         {order.isPaid ? (
@@ -86,14 +83,15 @@ const OrderHistory = () => {
                       <p>Delivered :</p>
                       <div>
                         {order.isDelivered ? (
-                          <Message condition="success">{order.deliveredAt}</Message>
+                          <Message condition="success">
+                            {order.deliveredAt}
+                          </Message>
                         ) : (
                           <Message condition="dangerHistory">
                             Waiting For Delivered
                           </Message>
                         )}
                       </div>
-                      {/* </div> */}
                     </div>
                     <div>
                       <p>Total Price :</p>
@@ -105,7 +103,7 @@ const OrderHistory = () => {
                       <button
                         onClick={() => history.push(`/order/${order._id}`)}
                       >
-                        Go To Details Order
+                        Details Order
                       </button>
                     </div>
                     <div>

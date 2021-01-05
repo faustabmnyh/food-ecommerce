@@ -14,6 +14,7 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  flex: 1 1 20rem;
 }
 
 .signin__header {
@@ -57,7 +58,6 @@
   text-indent: 5px;
 }
 
-
 .singin__btnLogin {
   font-family: "quicksand";
   width: 100%;
@@ -85,4 +85,182 @@
 .siginin__image {
   max-width: 930px;
   width: 100%;
+  flex: 3 1 30rem;
+}
+
+@media (max-width: 1270px) {
+  .siginin__image {
+    max-width: 700px;
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .siginin__image {
+    max-width: 600px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 950px) {
+  .signin {
+    background-image: url(../../assets/images/signin-background.png);
+  }
+  .siginin__left {
+    background: transparent;
+    background: white;
+    width: fit-content;
+    margin: 40px 20px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .signin__logo {
+    margin-top: 20px;
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
+  .signin__header {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .siginin__container form input {
+    width: 100%;
+    height: 35px;
+  }
+
+  .siginin__image {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  . {
+    margin-top: 20px;
+    max-width: 180px;
+    margin-bottom: 10px;
+  }
+  .signin__header {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .siginin__container form input {
+    width: 100%;
+    height: 35px;
+  }
+  .siginin__container form h5 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .signin__btnRegister {
+    font-size: 14px;
+  }
+
+  .siginin__image {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .signin__logo {
+    max-width: 150px;
+  }
+  .signin__header {
+    font-size: 17px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .siginin__container form input {
+    width: 100%;
+    height: 30px;
+    font-size: 12px;
+  }
+  .siginin__container form h5 {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .siginin__container button {
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .signin__btnRegister {
+    font-size: 12px;
+  }
+
+  .siginin__image {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .signin__header {
+    font-size: 35px;
+  }
+
+  .signin__logo {
+    max-width: 320px;
+  }
+  .siginin__container form h5 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .siginin__container form input {
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+  }
+
+  .singin__btnLogin {
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .signin__btnRegister {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .signin__header {
+    font-size: 60px;
+  }
+
+  .signin__logo {
+    margin-top: 70px;
+    max-width: 500px;
+  }
+  .siginin__container form h5 {
+    font-size: 35px;
+    margin-bottom: 8px;
+  }
+  .siginin__container form input {
+    width: 100%;
+    height: 90px;
+    font-size: 35px;
+    text-indent: 10px;
+  }
+
+  .singin__btnLogin {
+    height: 80px;
+    font-size: 32px;
+    border-radius: 40px;
+  }
+
+  .signin__btnRegister {
+    margin-top: 10px;
+    font-size: 30px;
+  }
+
+  .siginin__image {
+    max-width: 1700px;
+    width: 100%;
+    flex: 3 1 30rem;
+  }
 }

@@ -1,7 +1,9 @@
+.shipping {
+  padding: 0 4rem 0 2rem;
+}
 .shipping__container {
   background: white;
   display: flex;
-  max-width: 60rem;
   width: 100%;
   margin: 30px auto;
   padding: 1rem;
@@ -61,4 +63,95 @@
   cursor: pointer;
   color: white;
   background: #1a3c65;
+}
+
+@media (max-width: 375px) {
+  .shipping {
+    padding: 0 3rem 0 1rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .shipping__container h1 {
+    font-size: 25px;
+  }
+
+  .shipping__container label {
+    font-size: 16px;
+  }
+
+  .shipping__container form input {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .shipping__container h1 {
+    font-size: 28px;
+  }
+  .shipping__container label {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .shipping {
+    padding: 2rem 4rem 2rem 2rem;
+  }
+
+  .shipping__container h1 {
+    font-size: 35px;
+  }
+  .shipping__container label {
+    font-size: 22px;
+  }
+
+  .shipping__container form input {
+    font-size: 20px;
+  }
+  .shipping_btnMap {
+    width: 160px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  .shipping__btn {
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .shipping {
+    padding: 5rem 12rem 4rem 6rem;
+  }
+
+  .shipping__container {
+    padding: 3rem;
+  }
+
+  .shipping__container h1 {
+    font-size: 60px;
+  }
+  .shipping__container label {
+    font-size: 40px;
+  }
+
+  .shipping__container form input {
+    font-size: 35px;
+    height: 80px;
+    border-radius: 6px;
+    text-indent: 15px;
+  }
+  .shipping_btnMap {
+    width: 220px;
+    height: 60px;
+    border-radius: 15px;
+    font-size: 25px;
+  }
+  .shipping__btn {
+    margin-top: 30px;
+    height: 65px;
+    font-size: 28px;
+  }
 }

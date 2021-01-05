@@ -3,6 +3,9 @@
   width: 100%;
   margin: 0 auto 50px auto;
 }
+.orderHistory h1 {
+  margin-left: 2rem;
+}
 .orderHistory__allContent {
   display: flex;
   flex-direction: column-reverse;
@@ -15,6 +18,7 @@
 .orderHistory__container {
   background: white;
   padding: 1.2rem;
+  margin: 0 2rem;
   margin-top: 20px;
   border-radius: 20px;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.08);
@@ -111,4 +115,258 @@
 
 .orderHistory__paymentDetails {
   display: flex;
+}
+
+@media (max-width: 768px) {
+  .orderHistory h1 {
+    font-size: 28px;
+  }
+  .orderHistory__header h2 {
+    font-size: 18px;
+  }
+  .orderHistory__bodyBotBtn button {
+    width: 140px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .orderHistory__bodyBotBtn div:last-child button {
+    width: 140px;
+    height: 35px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .orderHistory__detailsOrder {
+    display: none;
+  }
+  .orderHistory__header h2 {
+    font-size: 16px;
+  }
+
+  .orderHistory__orderAt {
+    font-size: 16px;
+  }
+
+  .orderHistory__bodyContent h2 {
+    font-size: 15px;
+  }
+
+  .orderHistory__item {
+    font-size: 12px;
+  }
+
+  .orderHistory__bodyBot {
+    flex-wrap: wrap;
+  }
+
+  .orderHistory__price strong {
+    font-size: 16px;
+  }
+
+  .orderHistory__bodyBotBtn button {
+    width: 120px;
+    height: 30px;
+    font-size: 10px;
+  }
+  .orderHistory__bodyBotBtn div:last-child button {
+    width: 120px;
+    height: 30px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 445px) {
+  .orderHistory h1 {
+    font-size: 25px;
+  }
+  .orderHistory__bodyBotBtn {
+    margin-top: 10px;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .orderHistory__detailsOrder {
+    display: none;
+  }
+  .orderHistory__header h2 {
+    font-size: 14px;
+  }
+
+  .orderHistory__header {
+    flex-wrap: wrap;
+  }
+  .orderHistory__orderAt {
+    font-size: 14px;
+  }
+
+  .orderHistory__item {
+    font-size: 12px;
+  }
+
+  .orderHistory__price strong {
+    font-size: 14px;
+  }
+
+  .orderHistory__bodyBotBtn button {
+    width: 110px;
+    height: 30px;
+    font-size: 10px;
+  }
+  .orderHistory__bodyBotBtn div:last-child button {
+    width: 110px;
+    height: 30px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 330px) {
+  .orderHistory__bodyBotBtn button {
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+  }
+  .orderHistory__bodyBotBtn div:last-child button {
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .orderHistory {
+    max-width: 80rem;
+    margin: 2rem auto 50px auto;
+  }
+  .orderHistory h1 {
+    font-size: 35px;
+    margin-left: 2rem;
+  }
+  .orderHistory__container {
+    padding: 1.8rem;
+    border-radius: 30px;
+  }
+  .orderHistory__orderAt {
+    font-size: 25px;
+  }
+
+  .orderHistory__header h2 {
+    font-size: 25px;
+  }
+
+  .orderHistory__body {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .orderHistory__body img {
+    max-width: 120px;
+  }
+
+  .orderHistory__item {
+    font-size: 20px;
+  }
+
+  .orderHistory__bodyContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1rem;
+  }
+
+  .orderHistory__bodyContent h2 {
+    font-size: 25px;
+  }
+
+  .orderHistory__price h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .orderHistory__price p {
+    font-size: 20px;
+  }
+
+  .orderHistory__price strong {
+    font-size: 22px;
+  }
+  .orderHistory__bodyBotBtn button {
+    width: 13rem;
+    height: 45px;
+    font-size: 16px;
+    margin-right: 1rem;
+  }
+  .orderHistory__bodyBotBtn div:last-child button {
+    width: 13rem;
+    height: 45px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .orderHistory {
+    max-width: 140rem;
+    margin: 6rem auto 50px auto;
+  }
+
+  .orderHistory__detailsOrder {
+    width: 400px;
+  }
+
+  .orderHistory h1 {
+    font-size: 65px;
+    margin-left: 2rem;
+  }
+  .orderHistory__container {
+    padding: 2.6rem;
+    border-radius: 40px;
+    margin-top: 30px;
+  }
+  .orderHistory__orderAt {
+    font-size: 40px;
+  }
+
+  .orderHistory__header h2 {
+    font-size: 40px;
+  }
+
+  .orderHistory__body img {
+    max-width: 200px;
+  }
+
+  .orderHistory__item {
+    font-size: 30px;
+  }
+
+  .orderHistory__bodyContent h2 {
+    font-size: 40px;
+  }
+
+  .orderHistory__price h2 {
+    font-size: 35px;
+    margin-bottom: 5px;
+  }
+
+  .orderHistory__price p {
+    font-size: 30px;
+  }
+
+  .orderHistory__price strong {
+    font-size: 38px;
+  }
+  .orderHistory__bodyBotBtn button {
+    width: 20rem;
+    height: 70px;
+    font-size: 25px;
+    margin-right: 2rem;
+  }
+  .orderHistory__bodyBotBtn div:last-child button {
+    width: 20rem;
+    height: 70px;
+    font-size: 25px;
+  }
 }

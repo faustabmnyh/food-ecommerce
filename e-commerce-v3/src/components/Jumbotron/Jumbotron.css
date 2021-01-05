@@ -62,11 +62,170 @@
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.jumbotron img {
+.jumbotron__imageMain {
   max-width: 600px;
   width: 100%;
   position: absolute;
   top: 0rem;
   right: -4rem;
   z-index: 100;
+}
+
+.jumbotron__image {
+  display: none;
+}
+
+@media (max-width: 1060px) {
+  .jumbotron__imageMain {
+    max-width: 450px;
+    width: 100%;
+    position: absolute;
+    top: 3rem;
+    right: -4rem;
+    z-index: 100;
+  }
+}
+@media (max-width: 850px) {
+  .jumbotron {
+    flex-direction: column;
+    margin-bottom: 300px;
+  }
+
+  .jumbotron__imageMain {
+    display: none;
+  }
+  .jumbotron__image {
+    display: block;
+  }
+}
+
+@media (min-width: 1440px) {
+  .jumbotron {
+    margin-bottom: 150px;
+  }
+  .jumbotron h1 {
+    font-weight: bolder;
+    font-size: 3.5rem;
+    color: #0e1828;
+  }
+  .jumbotron__body {
+    max-width: 500px;
+  }
+
+  .jumbotron__bodySubTitle {
+    font-size: 1.6rem;
+  }
+
+  .jumbotron__bodyText {
+    font-size: 1.2rem;
+  }
+  .jumbotron__btn {
+    width: 200px;
+    height: 50px;
+    font-size: 1.3rem;
+    border-radius: 20px;
+  }
+
+  .jumbotron__btn > .MuiSvgIcon-root {
+    font-size: 30px;
+  }
+
+  .jumbotron__imageMain {
+    max-width: 800px;
+    width: 100%;
+    position: absolute;
+    top: 3rem;
+    right: -4rem;
+    z-index: 100;
+  }
+}
+@media (min-width: 2560px) {
+  .jumbotron {
+    padding: 4rem;
+  }
+  .jumbotron h1 {
+    font-weight: bolder;
+    font-size: 6.5rem;
+    color: #0e1828;
+  }
+  .jumbotron__body {
+    max-width: 1000px;
+  }
+
+  .jumbotron__bodySubTitle {
+    font-size: 2.8rem;
+  }
+
+  .jumbotron__bodyText {
+    font-size: 2.2rem;
+  }
+  .jumbotron__btn {
+    width: 350px;
+    height: 90px;
+    border-radius: 40px;
+    margin-right: 40px;
+    font-size: 2.2rem;
+  }
+
+  .jumbotron__btn > .MuiSvgIcon-root {
+    font-size: 60px;
+  }
+
+  .jumbotron__imageMain {
+    max-width: 1300px;
+    width: 100%;
+    position: absolute;
+    top: 3rem;
+    right: -4rem;
+    z-index: 100;
+  }
+}
+
+@media (max-width: 425px) {
+  .jumbotron h1 {
+    font-weight: bolder;
+    font-size: 2.5rem;
+    color: #0e1828;
+  }
+  .jumbotron__body {
+    max-width: 350px;
+  }
+
+  .jumbotron__bodySubTitle {
+    font-size: 1rem;
+  }
+
+  .jumbotron__bodyText {
+    font-size: 14px;
+  }
+  .jumbotron__btn {
+    width: 130px;
+  }
+}
+
+@media (max-width: 320px) {
+  .jumbotron h1 {
+    font-weight: bolder;
+    font-size: 1.8rem;
+    color: #0e1828;
+  }
+  .jumbotron__body {
+    max-width: 250px;
+  }
+
+  .jumbotron__bodySubTitle {
+    font-size: 16px;
+  }
+
+  .jumbotron__bodyText {
+    font-size: 14px;
+  }
+
+  .jumbotron__btn {
+    width: 110px;
+    font-size: 12px;
+  }
+  .jumbotron__btn > .MuiSvgIcon-root {
+    font-size: 16px;
+  }
 }

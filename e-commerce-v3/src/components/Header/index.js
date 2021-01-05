@@ -4,18 +4,10 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
 import { signout } from "../../actions/userActions";
-import { Avatar, makeStyles } from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
-const useStyles = makeStyles((theme) => ({
-  small: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-  },
-}));
-
 const Header = () => {
-  const classes = useStyles();
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const dispatch = useDispatch();
@@ -38,7 +30,7 @@ const Header = () => {
         window.removeEventListener("scroll");
       };
     });
-  }, [dispatch]);
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     history.push(`/search/name/${name}`);
@@ -53,12 +45,6 @@ const Header = () => {
               <Link to="/">
                 <img src="/images/logo/mgFOOD.svg" alt="" />
               </Link>
-            </li>
-            <li className="header__links">
-              <Link>Best Sellers</Link>
-            </li>
-            <li className="header__links">
-              <Link>Hot Offers</Link>
             </li>
             <li className="header__links">
               <Link to="/shop">Shop</Link>
@@ -104,7 +90,7 @@ const Header = () => {
                 <div className="header__userProfileDropdown">
                   <div className="header__userProfile">
                     <Avatar
-                      className={classes.small}
+                      className="header__photo"
                       src={aboutUser.photo_profile}
                     />
                     <p>{aboutUser.username}</p>

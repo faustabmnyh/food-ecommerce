@@ -112,3 +112,154 @@
   background: whitesmoke;
   color: rgb(192, 192, 192);
 }
+
+@media (max-width: 768px) {
+  .cart {
+    flex-wrap: wrap-reverse;
+  }
+
+  .cart__header {
+    display: none;
+  }
+
+  .cart__subtotal {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .cart__content {
+    margin-right: 40px;
+  }
+
+  .cart__container {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .cart__container img {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cart__container {
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .cart__header {
+    font-size: 20px;
+  }
+
+  .cart__container img {
+    max-width: 200px;
+  }
+
+  .cart__body span {
+    font-size: 18px;
+  }
+
+  .cart__actions {
+    margin-top: 15px;
+  }
+
+  .cart__actions button {
+    width: 70px;
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .cart__headerBody h3 {
+    font-size: 25px;
+  }
+
+  .cart__headerBody strong {
+    font-size: 20px;
+  }
+
+  .cart__subtotal h2 {
+    font-size: 21px;
+  }
+
+  .cart__subtotal button {
+    font-size: 1rem;
+  }
+
+  .cart__subtotal button:disabled {
+    margin-top: 20px;
+    height: 65px;
+    border-radius: 30px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .cart {
+    padding: 6rem;
+  }
+
+  .cart__content {
+    margin-right: 70px;
+  }
+
+  .cart__header {
+    margin-bottom: 25px;
+    font-size: 35px;
+  }
+
+  .cart__container {
+    padding: 3rem;
+    border-radius: 40px;
+    margin-bottom: 20px;
+  }
+
+  .cart__container img {
+    max-width: 300px;
+    margin-right: 40px;
+  }
+  .cart__body span {
+    font-size: 30px;
+  }
+
+  .cart__actions {
+    margin-top: 15px;
+  }
+
+  .cart__actions button {
+    width: 150px;
+    height: 50px;
+    font-size: 26px;
+  }
+
+  .cart__headerBody h3 {
+    font-size: 40px;
+  }
+
+  .cart__headerBody strong {
+    font-size: 35px;
+  }
+
+  .cart__subtotal {
+    width: 1000px;
+    padding: 2rem;
+    border-radius: 35px;
+  }
+
+  .cart__subtotal h2 {
+    font-size: 35px;
+  }
+
+  .cart__subtotal button {
+    height: 65px;
+    font-size: 1.6rem;
+    border-radius: 30px;
+    margin-top: 20px;
+  }
+
+  .cart__subtotal button:disabled {
+    margin-top: 20px;
+    height: 65px;
+    border-radius: 30px;
+  }
+}

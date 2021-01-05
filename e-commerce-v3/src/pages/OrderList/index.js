@@ -15,7 +15,9 @@ import {
   useTheme,
 } from "@material-ui/core";
 import { ORDER_DELETE_RESET } from "../../constants/orderConstants";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 const useStyles = makeStyles((theme) => ({
   small: {
@@ -26,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const OrderList = (props) => {
+  let { pageNumber = 1 } = useParams();
   const classes = useStyles();
   const sellerMode = props.match.path.indexOf("/seller") >= 0;
   const [open, setOpen] = useState(false);
@@ -33,7 +36,7 @@ const OrderList = (props) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const orderList = useSelector((state) => state.orderList);
-  const { loading, error, orders } = orderList;
+  const { loading, error, orders, page, pages } = orderList;
   const orderDelete = useSelector((state) => state.orderDelete);
   const {
     loading: loadingDelete,
@@ -44,12 +47,16 @@ const OrderList = (props) => {
   const { aboutUser } = userSignin;
   const dispatch = useDispatch();
   const history = useHistory();
+
   useEffect(() => {
     if (successDelete) {
       dispatch({ type: ORDER_DELETE_RESET });
     }
-    dispatch(listOrders({ seller: sellerMode ? aboutUser._id : "" }));
-  }, [dispatch, successDelete, sellerMode, aboutUser]);
+    dispatch(
+      listOrders({ seller: sellerMode ? aboutUser._id : "", pageNumber })
+    );
+  }, [dispatch, successDelete, sellerMode, aboutUser, pageNumber]);
+
   const handleClickOpen = (order) => {
     setOpen(true);
     setOrderId(order._id);
@@ -153,6 +160,55 @@ const OrderList = (props) => {
             ))}
           </tbody>
         </table>
+      )}
+      {pages > 1 && (
+        <div className="pagination">
+          {page > 1 && (
+            <button
+              onClick={() =>
+                history.push(
+                  sellerMode
+                    ? `/orderlist/seller/pageNumber/${page + 1}`
+                    : `/orderlist/pageNumber/${page - 1}`
+                )
+              }
+            >
+              <ArrowBackIosIcon
+                style={{ fontSize: "16px", marginRight: "5px" }}
+              />
+              PREV
+            </button>
+          )}
+          {[...Array(pages).keys()].map((p) => (
+            <Link
+              className={p + 1 === page ? "active" : ""}
+              key={p + 1}
+              to={
+                sellerMode
+                  ? `/orderlist/seller/pageNumber/${p + 1}`
+                  : `/orderlist/pageNumber/${p + 1}`
+              }
+            >
+              {p + 1}
+            </Link>
+          ))}
+          {pages > page && (
+            <button
+              onClick={() =>
+                history.push(
+                  sellerMode
+                    ? `/orderlist/seller/pageNumber/${page + 1}`
+                    : `/orderlist/pageNumber/${page + 1}`
+                )
+              }
+            >
+              NEXT
+              <ArrowForwardIosIcon
+                style={{ fontSize: "16px", marginLeft: "5px" }}
+              />
+            </button>
+          )}
+        </div>
       )}
     </div>
   );

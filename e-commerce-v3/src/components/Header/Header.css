@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   height: 100%;
   font-family: "Quicksand", sans-serif;
 }
@@ -194,4 +195,253 @@
 .header__userProfileDropdown:hover .header__dropdownContent {
   display: flex;
   justify-content: center;
+}
+
+.header__photo {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  .header__links {
+    margin-left: 2rem;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .header img {
+    max-width: 120px;
+  }
+
+  .header__right {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .header__links {
+    margin-left: 2rem;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .header img {
+    padding: 5px;
+    max-width: 250px;
+  }
+
+  .header__cartInput {
+    padding: 0 5px;
+    width: 250px;
+    height: 40px;
+    background: white;
+    display: flex;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .header__searchBtn {
+    padding: 3px 10px 0 0;
+    color: #1a3c65;
+  }
+
+  .header__cartInput input {
+    font-size: 20px;
+  }
+  .header__cartInput label > .MuiSvgIcon-root {
+    font-size: 30px;
+  }
+
+  .header__cartBtn {
+    width: 50px;
+    height: 40px;
+  }
+
+  .header__cartBtn a > .MuiSvgIcon-root {
+    font-size: 25px;
+  }
+
+  .header__cartNumber {
+    right: -2px;
+    top: -8px;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  .header__items {
+    align-items: center;
+  }
+
+  .header__userProfile p {
+    margin-left: 15px;
+    font-size: 22px;
+  }
+
+  .header__photo {
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .header__userProfile:hover {
+    cursor: pointer;
+  }
+
+  .header__userProfileDropdown {
+    display: inline-block;
+    color: gray;
+    margin-left: 5px;
+  }
+  .header__dropdownContent {
+    display: none;
+    position: absolute;
+    min-width: 200px;
+    top: 60px;
+    left: 99%;
+    transform: translateX(-99%);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
+    background: white;
+    font-size: 20px;
+    z-index: 200;
+  }
+
+  .header__dropdownContent.admin {
+    width: 400px;
+    top: 60px;
+    left: 99%;
+    transform: translateX(-99%);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
+    background: white;
+    font-size: 20px;
+    z-index: 200;
+  }
+
+  .header__dropdownContent.admin-seller {
+    width: 600px;
+    top: 60px;
+    left: 97%;
+    font-size: 20px;
+  }
+  .header__btn {
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+@media (min-width: 2560px) {
+  .header__links {
+    margin-left: 2rem;
+    font-weight: 500;
+    font-size: 35px;
+  }
+
+  .header img {
+    padding: 15px;
+    max-width: 400px;
+  }
+
+  .header__cartInput {
+    padding: 0 5px;
+    width: 450px;
+    height: 70px;
+    background: white;
+    display: flex;
+    border-radius: 20px 0 0 20px;
+  }
+
+  .header__searchBtn {
+    padding: 3px 10px 0 0;
+    color: #1a3c65;
+  }
+
+  .header__cartInput input {
+    font-size: 35px;
+  }
+  .header__cartInput label > .MuiSvgIcon-root {
+    font-size: 55px;
+  }
+
+  .header__cartBtn {
+    width: 100px;
+    height: 70px;
+  }
+
+  .header__cartBtn a > .MuiSvgIcon-root {
+    font-size: 50px;
+  }
+
+  .header__cartNumber {
+    right: -2px;
+    top: -12px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .header__items {
+    display: flex;
+    align-items: center;
+  }
+
+  .header__userProfile p {
+    margin-left: 15px;
+    font-size: 40px;
+  }
+
+  .header__photo {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .header__userProfile:hover {
+    cursor: pointer;
+  }
+
+  .header__userProfileDropdown {
+    display: inline-block;
+    color: gray;
+    margin-left: 5px;
+    padding: 15px;
+  }
+  .header__dropdownContent {
+    display: none;
+    position: absolute;
+    min-width: 300px;
+    top: 90px;
+    left: 99%;
+    transform: translateX(-99%);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
+    background: white;
+    font-size: 32px;
+    z-index: 200;
+  }
+
+  .header__dropdownContent.admin {
+    width: 600px;
+    top: 90px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
+    background: white;
+    font-size: 32px;
+    z-index: 200;
+  }
+
+  .header__dropdownContent.admin-seller {
+    width: 850px;
+    top: 90px;
+    font-size: 32px;
+    transform: translateX(-97%);
+    border-radius: 20px;
+    padding: 1rem;
+  }
+
+  .header__btn {
+    width: 200px;
+    height: 70px;
+    font-size: 28px;
+    border-radius: 20px;
+  }
 }

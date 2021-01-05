@@ -75,11 +75,21 @@
 }
 
 .searchPage__right {
+  flex: 3 1 30rem;
+}
+
+.searchPage__rightContainer {
   border-radius: 20px;
   /* background: white; */
   /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08); */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  flex: 3 1 30rem;
+}
+
+@media (max-width: 560px) {
+  .searchPage__container {
+    flex-direction: column;
+  }
+ 
 }

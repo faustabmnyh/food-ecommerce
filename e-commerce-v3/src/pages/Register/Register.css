@@ -7,6 +7,12 @@
   width: 100%;
 }
 
+.register__image {
+  max-width: 930px;
+  width: 100%;
+  flex: 3 1 30rem;
+}
+
 .register__right {
   display: flex;
   width: 100%;
@@ -14,6 +20,7 @@
   flex-direction: column;
   background: white;
   height: 100%;
+  flex: 1 1 20rem;
 }
 
 .register__logo {
@@ -79,4 +86,180 @@
 .register__btnSignin {
   margin-top: 10px;
   text-align: center;
+}
+
+@media (max-width: 1270px) {
+  .register__image {
+    max-width: 700px;
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .register__image {
+    max-width: 600px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 950px) {
+  .register {
+    background-image: url(../../assets/images/signin-background.png);
+  }
+  .register__right {
+    background: transparent;
+    background: white;
+    width: fit-content;
+    margin: 40px 20px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .register__logo {
+    margin-top: 20px;
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
+  .regsiter__header {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .register__container form input {
+    width: 100%;
+    height: 35px;
+  }
+
+  .register__image {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .register__logo {
+    margin-top: 20px;
+    max-width: 180px;
+    margin-bottom: 10px;
+  }
+  .regsiter__header {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .register__container form input {
+    width: 100%;
+    height: 35px;
+  }
+  .register__container form h5 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .register__btnSignin {
+    font-size: 14px;
+  }
+
+  .register__image {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .register__logo {
+    max-width: 150px;
+  }
+  .regsiter__header {
+    font-size: 17px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .register__container form input {
+    width: 100%;
+    height: 30px;
+    font-size: 12px;
+  }
+  .register__container form h5 {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .register__container button {
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .register__btnSignin {
+    font-size: 12px;
+  }
+
+  .register__image {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .regsiter__header {
+    font-size: 35px;
+  }
+
+  .register__logo {
+    max-width: 320px;
+  }
+  .register__container form h5 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .register__container form input {
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+  }
+
+  .register__container button {
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .register__btnSignin {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .regsiter__header {
+    font-size: 60px !important;
+  }
+
+  .register__logo {
+    margin-top: 70px;
+    max-width: 500px;
+  }
+  .register__container form h5 {
+    font-size: 35px;
+    margin-bottom: 8px;
+  }
+  .register__container form input {
+    width: 100%;
+    height: 90px;
+    font-size: 35px;
+    text-indent: 10px;
+  }
+
+  .register__container button {
+    height: 80px;
+    font-size: 32px;
+    border-radius: 40px;
+  }
+
+  .register__btnSignin {
+    margin-top: 10px;
+    font-size: 30px;
+  }
+
+  .register__image {
+    max-width: 1700px;
+    width: 100%;
+  }
 }

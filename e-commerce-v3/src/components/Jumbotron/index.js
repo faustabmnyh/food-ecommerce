@@ -33,7 +33,8 @@ const Jumbotron = () => {
           </button>
         </div>
       </div>
-      <img src="/images/products/main-picture.png" alt="food" />
+      <img src="/images/products/main-picture.png" alt="food" className="jumbotron__imageMain"/>
+      <img src="/images/products/main-picture-2.png" alt="food" className="jumbotron__image"/>
     </div>
   );
 };

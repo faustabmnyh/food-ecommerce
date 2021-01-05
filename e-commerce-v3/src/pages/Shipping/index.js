@@ -131,7 +131,11 @@ const Shipping = () => {
           </div>
           <div>
             <label htmlFor="chooseOnMap">Location</label>
-            <button type="button" onClick={chooseOnMap} className="shipping_btnMap">
+            <button
+              type="button"
+              onClick={chooseOnMap}
+              className="shipping_btnMap"
+            >
               Choose On Map
             </button>
           </div>

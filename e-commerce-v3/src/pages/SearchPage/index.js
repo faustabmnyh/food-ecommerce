@@ -14,6 +14,8 @@ import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import GradeIcon from "@material-ui/icons/Grade";
 import { prices, ratings } from "../../utils";
 import Rating from "../../components/Rating";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 const SearchPage = () => {
   const {
@@ -23,12 +25,12 @@ const SearchPage = () => {
     max = 0,
     rating = 0,
     order = "newest",
+    pageNumber = 1,
   } = useParams();
-  console.log(min);
   const dispatch = useDispatch();
   const history = useHistory();
   const productAllLists = useSelector((state) => state.productAllLists);
-  const { loading, error, products } = productAllLists;
+  const { loading, error, products, page, pages } = productAllLists;
   const productCategoryList = useSelector((state) => state.productCategoryList);
   const {
     loading: loadingCategories,
@@ -38,6 +40,7 @@ const SearchPage = () => {
   useEffect(() => {
     dispatch(
       listAllProducts({
+        pageNumber,
         name: name !== "all" ? name : "",
         category: category !== "all" ? category : "",
         min,
@@ -47,15 +50,17 @@ const SearchPage = () => {
       })
     );
     dispatch(listProductCategories());
-  }, [dispatch, name, category, min, max, order, rating]);
+  }, [dispatch, name, category, min, max, order, rating, pageNumber]);
+
   const getFilterUrl = (filter) => {
+    const filterPage = filter.page || pageNumber;
     const filterCategory = filter.category || category;
     const filterName = filter.name || name;
     const filterRating = filter.rating || rating;
     const sortOrder = filter.order || order;
     const filterMax = filter.max;
     const filterMin = filter.min;
-    return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${sortOrder}`;
+    return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${sortOrder}/pageNumber/${filterPage}`;
   };
   const handleRemoveFilter = () => {
     history.push(`/search/name/${name}`);
@@ -67,7 +72,6 @@ const SearchPage = () => {
     max !== 0 ||
     rating !== 0 ||
     order !== "newest";
-
 
   return (
     <div className="searchPage">
@@ -183,9 +187,49 @@ const SearchPage = () => {
             <Message condition="danger">{error}</Message>
           ) : (
             <>
-              {products.map((product) => (
-                <Product key={product._id} product={product} />
-              ))}
+              {products.length === 0 && <Message>No Product Found</Message>}
+              <div className="searchPage__rightContainer">
+                {products.map((product) => (
+                  <Product key={product._id} product={product} />
+                ))}
+              </div>
+              {pages > 1 && (
+                <div className="pagination">
+                  {page > 1 && (
+                    <button
+                      onClick={() =>
+                        history.push(getFilterUrl({ page: page - 1 }))
+                      }
+                    >
+                      <ArrowBackIosIcon
+                        style={{ fontSize: "16px", marginRight: "5px" }}
+                      />
+                      PREV
+                    </button>
+                  )}
+                  {[...Array(pages).keys()].map((p) => (
+                    <Link
+                      className={p + 1 === page ? "active" : ""}
+                      key={p + 1}
+                      to={getFilterUrl({ page: p + 1 })}
+                    >
+                      {p + 1}
+                    </Link>
+                  ))}
+                  {pages > page && (
+                    <button
+                      onClick={() =>
+                        history.push(getFilterUrl({ page: page + 1 }))
+                      }
+                    >
+                      NEXT
+                      <ArrowForwardIosIcon
+                        style={{ fontSize: "16px", marginLeft: "5px" }}
+                      />
+                    </button>
+                  )}
+                </div>
+              )}
             </>
           )}
         </div>

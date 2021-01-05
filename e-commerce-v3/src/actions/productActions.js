@@ -43,6 +43,7 @@ export const listProducts = ({ seller = "" }) => async (dispatch) => {
 };
 
 export const listAllProducts = ({
+  pageNumber = "",
   seller = "",
   name = "",
   category = "",
@@ -54,7 +55,7 @@ export const listAllProducts = ({
   dispatch({ type: PRODUCT_LIST_SHOP_REQUEST });
   try {
     const { data } = await Axios.get(
-      `/v1/products/shop?seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`
+      `/v1/products/shop?pageNumber=${pageNumber}&seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`
     );
     dispatch({ type: PRODUCT_LIST_SHOP_SUCCESS, payload: data });
   } catch (err) {
@@ -72,7 +73,6 @@ export const listProductCategories = () => async (dispatch, getState) => {
   dispatch({ type: PRODUCT_CATEGORY_LIST_REQUEST });
   try {
     const { data } = await Axios.get("/v1/products/categories");
-    console.log("ads", data);
     dispatch({ type: PRODUCT_CATEGORY_LIST_SUCCESS, payload: data });
   } catch (err) {
     dispatch({

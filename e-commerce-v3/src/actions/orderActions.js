@@ -117,16 +117,23 @@ export const paymentOrder = (order, paymentResult) => async (
   }
 };
 
-export const listOrders = ({ seller = "" }) => async (dispatch, getState) => {
+export const listOrders = ({
+  seller = "",
+  pageNumber = "",
+  name = "",
+}) => async (dispatch, getState) => {
   console.log("seller from action", seller);
   dispatch({ type: ORDER_LIST_REQUEST });
   try {
     const {
       userSignin: { aboutUser },
     } = getState();
-    const { data } = await Axios.get(`/v1/orders?seller=${seller}`, {
-      headers: { Authorization: `Bearer ${aboutUser.token}` },
-    });
+    const { data } = await Axios.get(
+      `/v1/orders?pageNumber=${pageNumber}&seller=${seller}&name=${name}`,
+      {
+        headers: { Authorization: `Bearer ${aboutUser.token}` },
+      }
+    );
     dispatch({ type: ORDER_LIST_SUCCESS, payload: data });
   } catch (err) {
     dispatch({

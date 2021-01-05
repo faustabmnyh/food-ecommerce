@@ -36,7 +36,11 @@ const Register = ({ location }) => {
   }, [history, redirect, aboutUserSignin]);
   return (
     <div className="register">
-      <img src="/images/products/signin-background.png" alt="foods" />
+      <img
+        src="/images/products/signin-background.png"
+        alt="foods"
+        className="register__image"
+      />
       <div className="register__right">
         <Link to="/">
           <img

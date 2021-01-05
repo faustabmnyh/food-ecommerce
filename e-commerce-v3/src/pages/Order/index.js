@@ -70,9 +70,9 @@ const Order = () => {
   ) : error ? (
     <Message condition="danger">{error}</Message>
   ) : (
-    <div>
+    <div className="order">
       <Stepper stepOne stepTwo stepThree stepFour stepFive />
-      <div className="order">
+      <div className="order__content">
         <div className="order__left">
           <ul>
             <div className="order__container">

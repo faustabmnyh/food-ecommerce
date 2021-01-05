@@ -6,7 +6,6 @@ import Rating from "../Rating";
 import "./Product.css";
 
 const Product = ({ product }) => {
-  console.log(product);
   const dispatch = useDispatch();
   return (
     <div className="product">
@@ -33,7 +32,7 @@ const Product = ({ product }) => {
               </div>
             </div>
             <div>
-              <div>{product.description}</div>
+              <div className="product__description">{product.description}</div>
             </div>
           </div>
           <div className="product__footer">
@@ -47,7 +46,7 @@ const Product = ({ product }) => {
                 <strong>${product.price}</strong>
               </div>
               <button onClick={() => dispatch(addToCart(product._id, 1))}>
-                <ShoppingCartOutlinedIcon fontSize="small" />
+                <ShoppingCartOutlinedIcon className="product__cartIcon"/>
               </button>
             </div>
           </div>

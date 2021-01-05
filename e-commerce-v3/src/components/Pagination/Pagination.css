@@ -1,0 +1,22 @@
+.pagination {
+  display: flex;
+  margin-top: 10px;
+}
+
+.pagination__nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__container {
+  display: flex;
+  margin-right: 10px;
+}
+
+.paginate__pageItem {
+  display: flex;
+  margin-left: 10px;
+  justify-content: space-between;
+  background: blueviolet;
+}
