@@ -134,6 +134,7 @@
   color: gray;
   margin-left: 5px;
 }
+
 .header__dropdownContent {
   display: none;
   position: absolute;
@@ -149,7 +150,7 @@
 }
 
 .header__dropdownContent.admin {
-  width: 280px;
+  width: 300px;
   top: 45px;
   left: 99%;
   transform: translateX(-99%);
@@ -202,6 +203,28 @@
   height: 30px !important;
 }
 
+.header__userProfileMobile {
+  display: none;
+}
+
+.header__responsive {
+  display: none;
+}
+
+.header__cartBtnContainer.responsive {
+  display: none;
+}
+
+.header__profileDetails {
+  display: flex;
+  align-items: center;
+}
+
+.header__linksShop,
+.header__cartInput.responsive {
+  display: none;
+}
+
 /* tablet */
 @media (max-width: 768px) {
   .header__links {
@@ -214,8 +237,88 @@
     max-width: 120px;
   }
 
-  .header__right {
+  .header__userProfile,
+  .header__cart {
     display: none;
+  }
+
+  .header__userProfileMobile {
+    display: flex;
+    margin-right: 20px;
+  }
+
+  .header__userProfileDropdown {
+    display: inline-block;
+    color: gray;
+    margin-left: 5px;
+  }
+  .header__dropdownContent {
+    display: none;
+    position: absolute;
+    width: 100%;
+    margin-left: -20px;
+    font-size: 14px;
+  }
+
+  .header__dropdownContent.admin {
+    width: 100%;
+    margin-left: -20px;
+    font-size: 14px;
+  }
+
+  .header__dropdownContent.admin-seller {
+    width: 100%;
+    margin-left: -20px;
+    font-size: 14px;
+  }
+
+  .header__responsive {
+    display: flex;
+  }
+
+  .header__navSeller {
+    display: none;
+  }
+
+  .header__cartBtnContainer.responsive {
+    display: flex;
+  }
+  .header__cartBtnContainer.responsive .header__cartNumber {
+    right: 4px;
+  }
+  .header__cartBtnContainer.responsive .header__cartBtn {
+    background: transparent;
+    margin-right: 10px;
+  }
+  .header__cartInput.responsive {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .header__btn {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .header__userProfileMobile {
+    display: flex;
+    margin-right: 30px;
+  }
+
+  .header__links {
+    display: none;
+  }
+
+  .header__linksShop {
+    display: block;
+  }
+
+  .header__btn {
+    width: 90px;
+    height: 30px;
+    font-size: 12px;
+    margin-right: 30px;
   }
 }
 
@@ -288,40 +391,29 @@
   }
 
   .header__userProfileDropdown {
-    display: inline-block;
-    color: gray;
     margin-left: 5px;
   }
   .header__dropdownContent {
-    display: none;
-    position: absolute;
     min-width: 200px;
     top: 60px;
-    left: 99%;
-    transform: translateX(-99%);
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
-    background: white;
+    left: 97%;
+    transform: translateX(-97%);
     font-size: 20px;
-    z-index: 200;
   }
 
   .header__dropdownContent.admin {
     width: 400px;
     top: 60px;
-    left: 99%;
-    transform: translateX(-99%);
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
-    background: white;
+    left: 96%;
+    transform: translateX(-97%);
     font-size: 20px;
-    z-index: 200;
   }
 
   .header__dropdownContent.admin-seller {
     width: 600px;
     top: 60px;
     left: 97%;
+    transform: translateX(-97%);
     font-size: 20px;
   }
   .header__btn {
@@ -400,39 +492,34 @@
   }
 
   .header__userProfileDropdown {
-    display: inline-block;
-    color: gray;
     margin-left: 5px;
     padding: 15px;
   }
+
   .header__dropdownContent {
-    display: none;
-    position: absolute;
     min-width: 300px;
     top: 90px;
-    left: 99%;
-    transform: translateX(-99%);
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
-    background: white;
+    left: 7%;
+    transform: translateX(-7%);
     font-size: 32px;
-    z-index: 200;
+    padding: 1rem;
   }
 
   .header__dropdownContent.admin {
     width: 600px;
     top: 90px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349);
-    background: white;
+    left: 97%;
+    transform: translateX(-97%);
+    border-radius: 20px;
     font-size: 32px;
-    z-index: 200;
+    padding: 1rem;
   }
 
   .header__dropdownContent.admin-seller {
     width: 850px;
     top: 90px;
     font-size: 32px;
+    left: 97%;
     transform: translateX(-97%);
     border-radius: 20px;
     padding: 1rem;

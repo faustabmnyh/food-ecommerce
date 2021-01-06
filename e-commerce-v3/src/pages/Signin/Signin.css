@@ -136,7 +136,7 @@
 }
 
 @media (max-width: 425px) {
-  . {
+  .signin__logo {
     margin-top: 20px;
     max-width: 180px;
     margin-bottom: 10px;
