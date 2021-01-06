@@ -66,3 +66,17 @@
 .orderSummary__formStripe {
   margin-top: 15px;
 }
+
+@media (min-width: 2560px) {
+  .orderSummary__btnStripe {
+    width: 100%;
+    height: 70px;
+    border-radius: 35px;
+    font-size: 30px;
+  }
+
+  .orderSummary__btnStripe:disabled {
+    height: 70px;
+    border-radius: 35px;
+  }
+}

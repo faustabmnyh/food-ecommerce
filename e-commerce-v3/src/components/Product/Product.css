@@ -93,7 +93,7 @@
 }
 
 .product__cartIcon {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 @media (min-width: 1440px) {

@@ -126,10 +126,13 @@
     width: 100%;
     margin-bottom: 20px;
   }
+
   .cart__content {
     margin-right: 40px;
   }
-
+  .cart__content.message {
+    margin-right: 0px;
+  }
   .cart__container {
     margin-bottom: 20px;
     width: 100%;

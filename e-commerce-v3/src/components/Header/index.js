@@ -174,11 +174,6 @@ const Header = () => {
                       {aboutUser && aboutUser.isAdmin && (
                         <div>
                           <li>
-                            <Link to="/dashboard">
-                              Dashboard <small>(admin)</small>
-                            </Link>
-                          </li>
-                          <li>
                             <Link to="/productlists">
                               Products <small>(admin)</small>
                             </Link>

@@ -52,8 +52,7 @@ const Signin = ({ location }) => {
             />
             {error?.email && (
               <h5 className="dangerInput">
-                <ErrorIcon fontSize="small" style={{ marginRight: "5px" }} />{" "}
-                {error?.email}
+                <ErrorIcon fontSize="small" /> {error?.email}
               </h5>
             )}
             <h5 className={error?.password && "auth__errorHead"}>Password</h5>
@@ -65,8 +64,7 @@ const Signin = ({ location }) => {
             />
             {error?.password && (
               <h5 className="dangerInput">
-                <ErrorIcon fontSize="small" style={{ marginRight: "5px" }} />{" "}
-                {error?.password}
+                <ErrorIcon fontSize="small" /> {error?.password}
               </h5>
             )}
 

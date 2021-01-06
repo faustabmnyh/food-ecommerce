@@ -179,6 +179,15 @@ select:hover {
   color: #a02020;
   margin-bottom: 10px;
 }
+.dangerInput > .MuiSvgIcon-root {
+  margin-right: 5px;
+}
+
+@media (min-width: 2560px) {
+  .dangerInput > .MuiSvgIcon-root {
+    font-size: 35px;
+  }
+}
 
 .auth__error {
   border: 1px solid #a02020 !important;
@@ -224,6 +233,17 @@ select:hover {
   background: #eeffe0;
 }
 
+@media (max-width: 425px) {
+  .dangerInput > .MuiSvgIcon-root {
+    font-size: 15px;
+  }
+  .alert__success {
+    font-size: 14px;
+  }
+  .alert__info {
+    font-size: 14px;
+  }
+}
 @media (min-width: 1440px) {
   .alert__info {
     font-size: 20px;
@@ -240,6 +260,11 @@ select:hover {
     font-size: 20px;
     border-radius: 15px;
   }
+  .alert__danger {
+    padding: 1rem;
+    font-size: 20px;
+    border-radius: 15px;
+  }
 }
 @media (min-width: 2560px) {
   .alert__info {
@@ -248,11 +273,25 @@ select:hover {
     border-radius: 20px;
   }
   .alert__dangerHistory {
+    width: 400px;
     margin: 5px 10px 5px 0;
     padding: 2rem;
     font-size: 30px;
     border-radius: 20px;
+  }
 
+  .alert__success {
+    width: 400px;
+    padding: 2rem;
+    font-size: 30px;
+    border-radius: 20px;
+  }
+
+  .alert__danger {
+    margin-top: 60px;
+    font-size: 30px;
+    padding: 2rem;
+    border-radius: 20px;
   }
 }
 

@@ -27,7 +27,11 @@ const Cart = ({ location }) => {
   };
   return (
     <div className="cart">
-      <div className="cart__content">
+      <div
+        className={
+          cartItems.length !== 0 ? "cart__content" : "cart__content message"
+        }
+      >
         <div className="cart__header">
           <h1>Shopping Cart</h1>
           <div>Price</div>

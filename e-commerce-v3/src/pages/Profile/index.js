@@ -69,7 +69,6 @@ const Profile = () => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
     bodyFormData.append("image", file);
-    console.log(bodyFormData);
     try {
       const { data } = await Axios.post("/v1/uploads", bodyFormData, {
         headers: {
@@ -90,7 +89,6 @@ const Profile = () => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
     bodyFormData.append("image", file);
-    console.log(bodyFormData);
     try {
       const { data } = await Axios.post("/v1/uploads", bodyFormData, {
         headers: {

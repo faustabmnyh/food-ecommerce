@@ -62,8 +62,7 @@ const Register = ({ location }) => {
             />
             {error?.username && (
               <h5 className="dangerInput">
-                <ErrorIcon fontSize="small" style={{ marginRight: "5px" }} />{" "}
-                {error?.username}
+                <ErrorIcon fontSize="small" /> {error?.username}
               </h5>
             )}
             <h5 className={error?.email && "auth__errorHead"}>Email</h5>
@@ -75,8 +74,7 @@ const Register = ({ location }) => {
             />
             {error?.email && (
               <h5 className="dangerInput">
-                <ErrorIcon fontSize="small" style={{ marginRight: "5px" }} />{" "}
-                {error?.email}
+                <ErrorIcon fontSize="small" /> {error?.email}
               </h5>
             )}
             <h5 className={error?.password && "auth__errorHead"}>Password</h5>
@@ -88,8 +86,7 @@ const Register = ({ location }) => {
             />
             {error?.password && (
               <h5 className="dangerInput">
-                <ErrorIcon fontSize="small" style={{ marginRight: "5px" }} />{" "}
-                {error?.password}
+                <ErrorIcon fontSize="small" /> {error?.password}
               </h5>
             )}
             <h5 className={error?.confirmPassword && "auth__errorHead"}>
@@ -103,8 +100,7 @@ const Register = ({ location }) => {
             />
             {error?.confirmPassword && (
               <h5 className="dangerInput">
-                <ErrorIcon fontSize="small" style={{ marginRight: "5px" }} />{" "}
-                {error?.confirmPassword}
+                <ErrorIcon fontSize="small" /> {error?.confirmPassword}
               </h5>
             )}
             <button type="submit">Sign Up</button>

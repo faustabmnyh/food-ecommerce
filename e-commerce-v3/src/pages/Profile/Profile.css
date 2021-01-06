@@ -4,7 +4,7 @@
   display: flex;
   background: white;
   margin: 20px auto;
-  padding: 1.5rem 1rem;
+  padding: 2rem;
   border-radius: 20px;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.08);
   font-family: "Quicksand", sans-serif;
@@ -18,23 +18,25 @@
   flex-direction: column;
 }
 
-.profile img {
-  width: 200px;
-  height: 200px;
-  margin-right: 20px;
-  cursor: pointer;
+.profile__user {
+  display: flex;
 }
 
 .profile__right {
-  width: 75%;
+  width: 100%;
 }
 
-.profile__right h1 {
+.profile h1 {
   margin-bottom: 20px;
 }
 
+.profile__right > div {
+  display: flex;
+  flex-direction: column;
+}
+
 .profile__right input {
-  width: 98%;
+  width: 90%;
   height: 45px;
   margin: 5px 0 10px 0;
   border-radius: 3px;
@@ -63,6 +65,13 @@
 
 .profile__img {
   position: relative;
+}
+
+.profile img {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+  cursor: pointer;
 }
 
 .custom-file-input {
@@ -101,8 +110,17 @@
   width: 100%;
 }
 
+.profile__sellerRight > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__sellerRight label {
+  font-size: 16px;
+}
+
 .profile__sellerRight input {
-  width: 98%;
+  width: 90%;
   height: 45px;
   margin: 5px 0 10px 0;
   border-radius: 3px;
@@ -112,4 +130,294 @@
   font-family: "Quicksand", sans-serif;
   border: 1px solid rgb(218, 218, 218);
   text-indent: 5px;
+}
+
+@media (max-width: 1200px) {
+  .profile {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .profile {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile {
+    max-width: 550px;
+  }
+  .profile__user {
+    flex-wrap: wrap;
+  }
+  .profile img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+
+  .custom-file-input {
+    width: 150px;
+    height: 150px;
+    top: -155px;
+  }
+
+  .profile__right > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile__right input {
+    width: 100%;
+    height: 35px;
+    margin: 5px 0 10px 0;
+  }
+
+  .profile__sellerProfile {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .profile__sellerRight > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile__sellerRight input {
+    width: 100%;
+    height: 35px;
+    margin: 5px 0 10px 0;
+  }
+
+  .profile__btn {
+    width: 100%;
+    height: 30px;
+  }
+}
+
+@media (max-width: 650px) {
+  .profile {
+    max-width: 450px;
+  }
+}
+@media (max-width: 520px) {
+  .profile {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 425px) {
+  .profile {
+    max-width: 300px;
+  }
+  .profile__right input {
+    width: 100%;
+    height: 35px;
+  }
+  .profile__sellerRight input {
+    width: 100%;
+    height: 35px;
+  }
+  .profile__btn {
+    width: 100%;
+    height: 35px;
+  }
+}
+
+@media (max-width: 375px) {
+  .profile {
+    max-width: 250px;
+  }
+
+  .profile img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .profile__right input {
+    font-size: 14px;
+    width: 100%;
+    height: 35px;
+  }
+  .profile__sellerRight input {
+    font-size: 14px;
+    width: 100%;
+    height: 35px;
+  }
+  .profile__btn {
+    font-size: 12px;
+    width: 100%;
+    height: 30px;
+  }
+}
+@media (max-width: 320px) {
+  .profile {
+    max-width: 200px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .profile {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    background: white;
+    margin: 30px auto;
+    padding: 1.5rem 1rem;
+    margin-bottom: 50px;
+  }
+
+  .profile img {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .profile h1 {
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
+
+  .profile__right label {
+    font-size: 22px;
+  }
+
+  .profile__right input {
+    width: 98%;
+    height: 45px;
+    font-weight: 500;
+    font-size: 22px;
+    border: 1px solid rgb(218, 218, 218);
+  }
+
+  .profile__btn {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  .custom-file-input:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  .custom-file-input::-moz-file-upload-button {
+    visibility: hidden;
+  }
+
+  .profile__user {
+    display: flex;
+  }
+
+  .profile__sellerProfile {
+    display: flex;
+  }
+
+  .profile__sellerRight {
+    width: 100%;
+  }
+
+  .profile__sellerRight input {
+    width: 98%;
+    height: 45px;
+    font-weight: 500;
+    font-size: 22px;
+    border: 1px solid rgb(218, 218, 218);
+  }
+  .profile__sellerRight label {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .profile {
+    max-width: 2100px;
+    width: 100%;
+    margin: 20px auto;
+    margin-top: 6rem;
+    padding: 3.5rem 3rem;
+    border-radius: 30px;
+  }
+
+  .profile__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile img {
+    width: 400px;
+    height: 400px;
+    margin-right: 40px;
+    cursor: pointer;
+  }
+
+  .profile__right {
+    width: 75%;
+  }
+
+  .profile h1 {
+    font-size: 60px !important;
+    margin-bottom: 20px;
+  }
+
+  .profile__right label {
+    font-size: 40px;
+  }
+
+  .profile__right input {
+    width: 98%;
+    height: 80px;
+    margin: 5px 0 10px 0;
+    border-radius: 3px;
+    font-size: 40px;
+    border: 1px solid rgb(145, 145, 145);
+    text-indent: 10px;
+  }
+
+  .profile__btn {
+    width: 100%;
+    height: 75px;
+    border-radius: 40px;
+    margin: 20px 0;
+    font-size: 35px;
+  }
+
+  .profile__img {
+    position: relative;
+  }
+
+  .custom-file-input {
+    width: 400px;
+    height: 400px;
+    top: -205px;
+  }
+
+  .profile__sellerRight label {
+    font-size: 40px;
+  }
+
+  .profile__sellerRight input {
+    width: 98%;
+    height: 80px;
+    margin: 5px 0 10px 0;
+    border-radius: 3px;
+    font-size: 40px;
+    text-indent: 10px;
+    border: 1px solid rgb(145, 145, 145);
+  }
 }

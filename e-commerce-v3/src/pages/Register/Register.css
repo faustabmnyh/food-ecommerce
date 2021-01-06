@@ -229,33 +229,35 @@
 
 @media (min-width: 2560px) {
   .regsiter__header {
-    font-size: 60px !important;
+    font-size: 65px !important;
+    margin-left: 60px;
+    margin-bottom: 30px;
   }
 
   .register__logo {
     margin-top: 70px;
-    max-width: 500px;
+    max-width: 700px;
   }
   .register__container form h5 {
-    font-size: 35px;
-    margin-bottom: 8px;
+    font-size: 40px;
+    margin-bottom: 10px;
   }
   .register__container form input {
     width: 100%;
-    height: 90px;
-    font-size: 35px;
+    height: 110px;
+    font-size: 40px;
     text-indent: 10px;
   }
 
   .register__container button {
     height: 80px;
-    font-size: 32px;
+    font-size: 35px;
     border-radius: 40px;
   }
 
   .register__btnSignin {
     margin-top: 10px;
-    font-size: 30px;
+    font-size: 35px;
   }
 
   .register__image {
