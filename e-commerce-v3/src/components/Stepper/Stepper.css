@@ -137,8 +137,8 @@
 @media (min-width: 1440px) {
   .stepper__rounded {
     font-size: 18px;
-    width: 30px;
-    height: 30px;
+    width: 22px;
+    height: 22px;
   }
 
   .stepper__line {
@@ -148,32 +148,32 @@
 
   .stepper__rounded.active {
     font-size: 18px;
-    width: 30px;
-    height: 30px;
+    width: 22px;
+    height: 22px;
   }
 
   .stepper__textOne {
-    font-size: 22px;
+    font-size: 18px;
     margin-left: -20px;
   }
 
   .stepper__textTwo {
-    font-size: 22px;
+    font-size: 18px;
     margin-left: -27px;
   }
 
   .stepper__textThree {
-    font-size: 22px;
+    font-size: 18px;
     margin-left: -35px;
   }
 
   .stepper__textFour {
-    font-size: 22px;
+    font-size: 18px;
     margin-left: -50px;
   }
 
   .stepper__textFive {
-    font-size: 22px;
+    font-size: 18px;
     margin-left: -50px;
   }
 }

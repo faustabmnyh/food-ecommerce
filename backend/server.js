@@ -3,7 +3,10 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-const stripe = require("stripe")(process.env.STRIPE_CLIENT_SECRET);
+const stripe = require("stripe")(
+  process.env.STRIPE_CLIENT_SECRET ||
+    "sk_test_51HQog0E0XWms1zj7AvkuSkxHCqeKrFvC0pACMq5r71pmpGRP2xMyzAzgdd0zTdHmLEd5MC6oilwtHNDQoRc8UwNg00HVAzIYSt"
+);
 const userRouter = require("./src/routes/users");
 const productRouter = require("./src/routes/products");
 const orderRouter = require("./src/routes/orders");
@@ -59,7 +62,7 @@ app.use("/v1/orders", orderRouter);
 app.use("/v1/config/paypal", (_, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
-app.get("/v1/config/google", (_, res) => {
+app.get("/v1/config/google", (req, res) => {
   res.send(process.env.GOOGLE_API_KEY || "");
 });
 app.use(

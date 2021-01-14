@@ -9,7 +9,7 @@ module.exports.generateToken = (user) => {
       isAdmin: user.isAdmin,
       isSeller: user.isSeller,
     },
-    process.env.JWT_SECRET,
+    process.env.JWT_SECRET || "secretbosasasdasd",
     { expiresIn: "2d" }
   );
 };
