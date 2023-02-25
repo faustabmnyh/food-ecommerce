@@ -12,6 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(45deg, white 0, #dedede 100%);
   min-height: 100vh;
+  box-sizing: border-box;
   height: 100%;
 }
 
@@ -139,20 +140,20 @@ select:hover {
 
 @media (min-width: 1440px) {
   .rating span {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .rating p {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 @media (min-width: 2560px) {
   .rating span {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .rating p {
-    font-size: 40px;
+    font-size: 30px;
   }
 }
 

@@ -138,10 +138,6 @@ const createReview = expressAsyncHandler(async (req, res) => {
       message: "Review Created",
       review: updatedProduct.reviews[updatedProduct.reviews.length - 1],
     });
-    console.log(
-      "review",
-      updatedProduct.reviews[updatedProduct.reviews.length - 1]
-    );
   } else {
     res.status(404).send({ message: "Product Not Found" });
   }

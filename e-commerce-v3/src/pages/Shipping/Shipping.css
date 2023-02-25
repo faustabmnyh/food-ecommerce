@@ -1,7 +1,9 @@
 .shipping {
-  padding: 0 4rem 0 2rem;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 .shipping__container {
+  box-sizing: border-box;
   background: white;
   display: flex;
   width: 100%;
@@ -65,26 +67,6 @@
   background: #1a3c65;
 }
 
-@media (max-width: 375px) {
-  .shipping {
-    padding: 0 3rem 0 1rem;
-  }
-}
-
-@media (max-width: 425px) {
-  .shipping__container h1 {
-    font-size: 25px;
-  }
-
-  .shipping__container label {
-    font-size: 16px;
-  }
-
-  .shipping__container form input {
-    font-size: 14px;
-  }
-}
-
 @media (max-width: 768px) {
   .shipping__container h1 {
     font-size: 28px;
@@ -94,20 +76,47 @@
   }
 }
 
-@media (min-width: 1440px) {
-  .shipping {
-    padding: 2rem 4rem 2rem 2rem;
+@media (max-width: 425px) {
+  .shipping__container h1 {
+    font-size: 25px;
   }
 
-  .shipping__container h1 {
-    font-size: 35px;
-  }
   .shipping__container label {
-    font-size: 22px;
+    font-size: 15px;
   }
 
   .shipping__container form input {
-    font-size: 20px;
+    font-size: 15px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 320px) {
+  .shipping__container h1 {
+    font-size: 22px;
+  }
+
+  .shipping__container label {
+    font-size: 14px;
+  }
+
+  .shipping__container form input {
+    font-size: 14px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .shipping {
+    padding: 3rem;
+  }
+
+  .shipping__container label {
+    font-size: 18px;
+  }
+
+  .shipping__container form input {
+    font-size: 18px;
   }
   .shipping_btnMap {
     width: 160px;
@@ -116,30 +125,33 @@
     font-size: 16px;
   }
   .shipping__btn {
-    height: 40px;
+    height: 35px;
     font-size: 16px;
   }
 }
 
 @media (min-width: 2560px) {
   .shipping {
-    padding: 5rem 12rem 4rem 6rem;
+    padding: 5rem;
+    margin-top: 4rem;
   }
 
   .shipping__container {
     padding: 3rem;
+    margin-top: 5rem;
+    border-radius: 40px;
   }
 
   .shipping__container h1 {
-    font-size: 60px;
+    font-size: 50px;
   }
   .shipping__container label {
-    font-size: 40px;
+    font-size: 32px;
   }
 
   .shipping__container form input {
-    font-size: 35px;
-    height: 80px;
+    font-size: 32px;
+    height: 75px;
     border-radius: 6px;
     text-indent: 15px;
   }
@@ -147,11 +159,12 @@
     width: 220px;
     height: 60px;
     border-radius: 15px;
-    font-size: 25px;
+    font-size: 32px;
   }
+
   .shipping__btn {
     margin-top: 30px;
-    height: 65px;
-    font-size: 28px;
+    height: 60px;
+    font-size: 25px;
   }
 }

@@ -20,11 +20,9 @@ const Register = ({ location }) => {
   const { loading, error } = userRegister;
   const userSignin = useSelector((state) => state.userSignin);
   const { aboutUser: aboutUserSignin } = userSignin;
-  console.log(userRegister);
   const handleChange = (props) => (e) => {
     setValues({ ...values, [props]: e.target.value });
   };
-  console.log(redirect);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(register(values));

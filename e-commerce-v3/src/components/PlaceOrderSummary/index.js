@@ -9,7 +9,6 @@ const PlaceOrderSummary = ({ cart, loading, error }) => {
   const handlePlaceOrder = () => {
     dispacth(createdOrder({ ...cart, orderItems: cart.cartItems }));
   };
-  console.log("asdad", cart);
   return (
     <ul className="placeOrderSummary">
       <li>

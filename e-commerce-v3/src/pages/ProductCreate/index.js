@@ -64,7 +64,7 @@ const ProductCreate = ({ location }) => {
     }
   };
   useEffect(() => {
-    if (success) {
+  if (success) {
       dispatch({ type: PRODUCT_CREATE_RESET });
       history.push(`/productlists${redirect}`);
     }

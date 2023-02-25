@@ -324,20 +324,18 @@
 
 @media (min-width: 1440px) {
   .header__links {
-    margin-left: 2rem;
+    margin-left: 1rem;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .header img {
     padding: 5px;
-    max-width: 250px;
   }
 
   .header__cartInput {
     padding: 0 5px;
-    width: 250px;
-    height: 40px;
+    width: 180px;
     background: white;
     display: flex;
     border-radius: 10px 0 0 10px;
@@ -348,27 +346,20 @@
     color: #1a3c65;
   }
 
-  .header__cartInput input {
-    font-size: 20px;
-  }
-  .header__cartInput label > .MuiSvgIcon-root {
-    font-size: 30px;
-  }
 
   .header__cartBtn {
     width: 50px;
-    height: 40px;
   }
 
   .header__cartBtn a > .MuiSvgIcon-root {
-    font-size: 25px;
+    font-size: 22px;
   }
 
   .header__cartNumber {
     right: -2px;
     top: -8px;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     font-size: 12px;
   }
 
@@ -377,13 +368,12 @@
   }
 
   .header__userProfile p {
-    margin-left: 15px;
-    font-size: 22px;
+    margin-left: 10px;
   }
 
   .header__photo {
-    width: 45px !important;
-    height: 45px !important;
+    width: 35px !important;
+    height: 35px !important;
   }
 
   .header__userProfile:hover {
@@ -393,28 +383,29 @@
   .header__userProfileDropdown {
     margin-left: 5px;
   }
+  
   .header__dropdownContent {
     min-width: 200px;
-    top: 60px;
+    top: 50px;
     left: 97%;
     transform: translateX(-97%);
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .header__dropdownContent.admin {
     width: 400px;
-    top: 60px;
+    top: 50px;
     left: 96%;
     transform: translateX(-97%);
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .header__dropdownContent.admin-seller {
-    width: 600px;
-    top: 60px;
+    width: 500px;
+    top: 50px;
     left: 97%;
     transform: translateX(-97%);
-    font-size: 20px;
+    font-size: 16px;
   }
   .header__btn {
     width: 120px;
@@ -422,22 +413,22 @@
     font-size: 16px;
   }
 }
-@media (min-width: 2560px) {
+@media (min-width: 2000px) {
   .header__links {
     margin-left: 2rem;
     font-weight: 500;
-    font-size: 35px;
+    font-size: 28px;
   }
 
   .header img {
     padding: 15px;
-    max-width: 400px;
+    max-width: 300px;
   }
 
   .header__cartInput {
     padding: 0 5px;
-    width: 450px;
-    height: 70px;
+    width: 350px;
+    height: 60px;
     background: white;
     display: flex;
     border-radius: 20px 0 0 20px;
@@ -449,26 +440,27 @@
   }
 
   .header__cartInput input {
-    font-size: 35px;
+    font-size: 25px;
   }
   .header__cartInput label > .MuiSvgIcon-root {
-    font-size: 55px;
+    font-size: 45px;
   }
 
   .header__cartBtn {
-    width: 100px;
-    height: 70px;
+    width: 80px;
+    height: 60px;
+    border-radius: 0 20px 20px 0;
   }
 
   .header__cartBtn a > .MuiSvgIcon-root {
-    font-size: 50px;
+    font-size: 40px;
   }
 
   .header__cartNumber {
     right: -2px;
     top: -12px;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     font-size: 18px;
   }
 
@@ -479,12 +471,12 @@
 
   .header__userProfile p {
     margin-left: 15px;
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .header__photo {
-    width: 70px !important;
-    height: 70px !important;
+    width: 65px !important;
+    height: 65px !important;
   }
 
   .header__userProfile:hover {
@@ -501,7 +493,7 @@
     top: 90px;
     left: 7%;
     transform: translateX(-7%);
-    font-size: 32px;
+    font-size: 30px;
     padding: 1rem;
   }
 
@@ -511,14 +503,14 @@
     left: 97%;
     transform: translateX(-97%);
     border-radius: 20px;
-    font-size: 32px;
+    font-size: 30px;
     padding: 1rem;
   }
 
   .header__dropdownContent.admin-seller {
-    width: 850px;
+    width: 800px;
     top: 90px;
-    font-size: 32px;
+    font-size: 30px;
     left: 97%;
     transform: translateX(-97%);
     border-radius: 20px;

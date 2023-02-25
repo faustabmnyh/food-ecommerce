@@ -122,7 +122,6 @@ export const listOrders = ({
   pageNumber = "",
   name = "",
 }) => async (dispatch, getState) => {
-  console.log("seller from action", seller);
   dispatch({ type: ORDER_LIST_REQUEST });
   try {
     const {

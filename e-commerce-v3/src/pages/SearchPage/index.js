@@ -63,7 +63,7 @@ const SearchPage = () => {
     return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${sortOrder}/pageNumber/${filterPage}`;
   };
   const handleRemoveFilter = () => {
-    history.push(`/search/name/${name}`);
+    history.push(`/search/name/all`);
   };
   const condition =
     name !== "all" ||

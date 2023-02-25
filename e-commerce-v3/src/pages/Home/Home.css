@@ -25,3 +25,10 @@
   padding: 3rem 1rem;
   display: flex;
 } */
+
+
+@media (min-width: 2000px){
+  .home__product {
+    margin-left: 10rem;
+  }
+}

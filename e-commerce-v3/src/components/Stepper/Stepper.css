@@ -136,7 +136,7 @@
 
 @media (min-width: 1440px) {
   .stepper__rounded {
-    font-size: 18px;
+    font-size: 14px;
     width: 22px;
     height: 22px;
   }
@@ -147,53 +147,53 @@
   }
 
   .stepper__rounded.active {
-    font-size: 18px;
+    font-size: 16px;
     width: 22px;
     height: 22px;
   }
 
   .stepper__textOne {
-    font-size: 18px;
-    margin-left: -20px;
+    font-size: 16px;
+    margin-left: -15px;
   }
 
   .stepper__textTwo {
-    font-size: 18px;
-    margin-left: -27px;
+    font-size: 16px;
+    margin-left: -20px;
   }
 
   .stepper__textThree {
-    font-size: 18px;
-    margin-left: -35px;
+    font-size: 16px;
+    margin-left: -25px;
   }
 
   .stepper__textFour {
-    font-size: 18px;
-    margin-left: -50px;
+    font-size: 16px;
+    margin-left: -35px;
   }
 
   .stepper__textFive {
-    font-size: 18px;
-    margin-left: -50px;
+    font-size: 16px;
+    margin-left: -35px;
   }
 }
 
 @media (min-width: 2560px) {
   .stepper__rounded {
-    font-size: 25px;
-    width: 50px;
-    height: 50px;
+    font-size: 23px;
+    width: 38px;
+    height: 38px;
   }
 
   .stepper__line {
     width: 200px;
-    height: 10px;
+    height: 8px;
   }
 
   .stepper__rounded.active {
-    font-size: 25px;
-    width: 50px;
-    height: 50px;
+    font-size: 23px;
+    width: 38px;
+    height: 38px;
   }
 
   .stepper__textOne {

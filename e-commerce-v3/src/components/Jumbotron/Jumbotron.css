@@ -6,6 +6,7 @@
   height: 80vh;
   padding: 2rem;
   margin-left: 2rem;
+  box-sizing: border-box;
   z-index: 12;
   scroll-behavior: smooth;
 }
@@ -15,23 +16,25 @@
   font-size: 3rem;
   color: #0e1828;
   font-family: "rubik", sans-serif;
-  margin-bottom: 2rem;
 }
 
 .jumbotron__body {
   max-width: 400px;
   font-family: "poppins", sans-serif;
-  margin-bottom: 2rem;
 }
 
 .jumbotron__bodySubTitle {
   font-size: 1.2rem;
   color: #112a52;
+  margin-top: 15px;
+
   font-weight: bolder;
 }
 
 .jumbotron__bodyText {
   color: #575656;
+  font-size: 15px;
+  margin: 15px 0;
 }
 
 .jumbotron__btnContainer {
@@ -68,10 +71,23 @@
   position: absolute;
   top: 0rem;
   right: -4rem;
-  z-index: 100;
+  z-index: -1;
 }
 
 .jumbotron__image {
+  display: none;
+}
+
+.jumbotron__leaves {
+  position: absolute;
+  z-index: 101;
+  right: 10px;
+  max-width: 300px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.jumbotron__leavesTwo {
   display: none;
 }
 
@@ -94,8 +110,22 @@
   .jumbotron__imageMain {
     display: none;
   }
+
+  .jumbotron__leaves {
+    display: none;
+  }
   .jumbotron__image {
     display: block;
+  }
+  .jumbotron__leavesTwo {
+    display: block;
+    position: absolute;
+    top: 28rem;
+    left: 55%;
+    transform: translateX(-55%);
+    max-width: 350px;
+    width: 100%;
+    object-fit: contain;
   }
 }
 
@@ -105,83 +135,102 @@
   }
   .jumbotron h1 {
     font-weight: bolder;
-    font-size: 3.5rem;
     color: #0e1828;
   }
   .jumbotron__body {
-    max-width: 500px;
-  }
-
-  .jumbotron__bodySubTitle {
-    font-size: 1.6rem;
+    max-width: 450px;
   }
 
   .jumbotron__bodyText {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
+
   .jumbotron__btn {
-    width: 200px;
-    height: 50px;
-    font-size: 1.3rem;
+    width: 160px;
+    height: 40px;
+    font-size: 0.9rem;
     border-radius: 20px;
   }
 
   .jumbotron__btn > .MuiSvgIcon-root {
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .jumbotron__imageMain {
-    max-width: 800px;
     width: 100%;
     position: absolute;
-    top: 3rem;
     right: -4rem;
     z-index: 100;
   }
 }
-@media (min-width: 2560px) {
+@media (min-width: 2000px) {
   .jumbotron {
-    padding: 4rem;
+    padding: 6rem;
+    margin-top: 2rem;
   }
+
   .jumbotron h1 {
     font-weight: bolder;
-    font-size: 6.5rem;
+    font-size: 4.5rem;
     color: #0e1828;
   }
   .jumbotron__body {
-    max-width: 1000px;
+    max-width: 800px;
   }
 
   .jumbotron__bodySubTitle {
-    font-size: 2.8rem;
+    font-size: 2.25rem;
   }
 
   .jumbotron__bodyText {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
+    margin-bottom: 50px;
   }
+
   .jumbotron__btn {
-    width: 350px;
-    height: 90px;
+    width: 300px;
+    height: 75px;
     border-radius: 40px;
     margin-right: 40px;
-    font-size: 2.2rem;
+    font-size: 1.6rem;
   }
 
   .jumbotron__btn > .MuiSvgIcon-root {
-    font-size: 60px;
+    font-size: 45px;
   }
 
   .jumbotron__imageMain {
-    max-width: 1300px;
+    max-width: 1000px;
     width: 100%;
     position: absolute;
-    top: 3rem;
     right: -4rem;
     z-index: 100;
+  }
+
+  .jumbotron__leaves {
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 768px) {
+  .jumbotron h1 {
+    font-weight: bolder;
+    font-size: 2rem;
+    color: #0e1828;
+  }
+  .jumbotron__bodySubTitle {
+    font-size: 1.1rem;
+  }
+  .jumbotron__bodyText {
+    font-size: 15px;
   }
 }
 
 @media (max-width: 425px) {
+  .jumbotron {
+    margin-top: 1rem;
+  }
+
   .jumbotron h1 {
     font-weight: bolder;
     font-size: 2.5rem;
@@ -227,5 +276,16 @@
   }
   .jumbotron__btn > .MuiSvgIcon-root {
     font-size: 16px;
+  }
+
+  .jumbotron__leavesTwo {
+    display: block;
+    position: absolute;
+    top: 28rem;
+    left: 55%;
+    transform: translateX(-50%);
+    max-width: 350px;
+    width: 100%;
+    object-fit: contain;
   }
 }

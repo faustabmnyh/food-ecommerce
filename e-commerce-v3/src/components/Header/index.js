@@ -34,6 +34,7 @@ const Header = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     history.push(`/search/name/${name}`);
+    setName("");
   };
 
   return (
@@ -159,11 +160,14 @@ const Header = () => {
                           className="header__cartInput responsive"
                           onSubmit={handleSubmit}
                         >
-                          <label htmlFor="search" className="header__searchBtn">
+                          <label
+                            htmlFor="searchRes"
+                            className="header__searchBtn"
+                          >
                             <SearchIcon />
                           </label>
                           <input
-                            id="search"
+                            id="searchRes"
                             type="text"
                             placeholder="Search..."
                             value={name}
